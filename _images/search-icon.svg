@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.018" height="24" viewBox="0 0 24.018 24">
+  <defs>
+    <style>
+      .search-icon-1 {
+        fill: #2a8817;
+      }
+    </style>
+  </defs>
+  <g id="search" transform="translate(-1.979 -1.979)">
+    <path id="Path_606" data-name="Path 606" class="search-icon-1" d="M25.66,23.956l-4.453-4.417a10.8,10.8,0,1,0-1.668,1.668l4.417,4.417a1.192,1.192,0,1,0,1.7-1.668ZM12.806,21.207a8.4,8.4,0,1,1,8.4-8.4,8.4,8.4,0,0,1-8.4,8.4Z" transform="translate(0 0)"/>
+  </g>
+</svg>
