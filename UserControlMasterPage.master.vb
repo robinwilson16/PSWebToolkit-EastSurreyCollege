@@ -49,63 +49,101 @@ Partial Class UserControlMasterPage
 
         Dim htmlHeader As HtmlHead = CType(Page.Master.FindControl("headtag"), HtmlHead)
 
+        ' jQuery UI
+        Dim jqUIcss As New HtmlGenericControl()
+        jqUIcss.TagName = "link"
+        jqUIcss.Attributes.Add("rel", "stylesheet")
+        jqUIcss.Attributes.Add("type", "text/css")
+        jqUIcss.Attributes("href") = ResolveUrl("~/Scripts/jquery-ui/themes/base/jquery-ui.min.css")
+        htmlHeader.Controls.Add(jqUIcss)
 
-        Dim js1 As New HtmlGenericControl("script")
-        js1.Attributes("type") = "text/javascript"
-        ''CCCPS-77643: Upgraded JQuery with latest version.
-        js1.Attributes("src") = ResolveUrl("~/Scripts/jquery-3.7.1.min.js")
-        htmlHeader.Controls.Add(js1)
+        Dim jqUIjs As New HtmlGenericControl("script")
+        jqUIjs.Attributes("type") = "text/javascript"
+        jqUIjs.Attributes("src") = ResolveUrl("~/Scripts/jquery-ui/jquery-ui.min.js")
+        htmlHeader.Controls.Add(jqUIjs)
 
-        Dim css4 As New HtmlGenericSelfClosing()
-        css4.TagName = "link"
-        css4.Attributes.Add("rel", "stylesheet")
-        css4.Attributes.Add("type", "text/css")
-        css4.Attributes("href") = ResolveUrl("~/content/themes/base/jquery-ui.min.css")
-        htmlHeader.Controls.Add(css4)
+        ' jQuery
+        Dim jqjs As New HtmlGenericControl("script")
+        jqjs.Attributes("type") = "text/javascript"
+        jqjs.Attributes("src") = ResolveUrl("~/Scripts/jquery/dist/jquery.min.js")
+        htmlHeader.Controls.Add(jqjs)
 
-        Dim js6 As New HtmlGenericControl("script")
-        js6.Attributes("type") = "text/javascript"
-        js6.Attributes("src") = ResolveUrl("~/Scripts/jquery-ui-1.14.1.min.js")
-        htmlHeader.Controls.Add(js6)
+        ' Bootstrap
+        Dim bscss As New HtmlGenericSelfClosing()
+        bscss.TagName = "link"
+        bscss.Attributes.Add("rel", "stylesheet")
+        bscss.Attributes.Add("type", "text/css")
+        bscss.Attributes("href") = ResolveUrl("~/Scripts/bootstrap/css/bootstrap.min.css")
+        htmlHeader.Controls.Add(bscss)
+
+        Dim bsjs As New HtmlGenericControl("script")
+        bsjs.Attributes("type") = "text/javascript"
+        bsjs.Attributes("src") = ResolveUrl("~/Scripts/bootstrap/js/bootstrap.bundle.min.js")
+        htmlHeader.Controls.Add(bsjs)
+
+        ' Font Awesome
+        Dim facss As New HtmlGenericSelfClosing()
+        facss.TagName = "link"
+        facss.Attributes.Add("rel", "stylesheet")
+        facss.Attributes.Add("type", "text/css")
+        facss.Attributes("href") = ResolveUrl("~/Scripts/font-awesome/css/all.min.css")
+        htmlHeader.Controls.Add(facss)
+
+        ' Callout
+        Dim cocss As New HtmlGenericSelfClosing()
+        cocss.TagName = "link"
+        cocss.Attributes.Add("rel", "stylesheet")
+        cocss.Attributes.Add("type", "text/css")
+        cocss.Attributes("href") = ResolveUrl("~/content/callout.css")
+        htmlHeader.Controls.Add(cocss)
+
+        ' Robin Digital Improvements
+        Dim rdcss As New HtmlGenericSelfClosing()
+        rdcss.TagName = "link"
+        rdcss.Attributes.Add("rel", "stylesheet")
+        rdcss.Attributes.Add("type", "text/css")
+        rdcss.Attributes("href") = ResolveUrl("~/content/RobinDigital.css")
+        htmlHeader.Controls.Add(rdcss)
+
+        Dim rdjs As New HtmlGenericControl("script")
+        rdjs.Attributes("type") = "text/javascript"
+        rdjs.Attributes("src") = ResolveUrl("~/Scripts/RobinDigital.js")
+        htmlHeader.Controls.Add(rdjs)
 
 
-        Dim css6 As New HtmlGenericSelfClosing()
-        css6.TagName = "link"
-        css6.Attributes.Add("rel", "stylesheet")
-        css6.Attributes.Add("type", "text/css")
-        css6.Attributes("href") = ResolveUrl("~/content/toastr.min.css")
-        htmlHeader.Controls.Add(css6)
+        ' Custom Orbital South Colleges
+        Dim osccss As New HtmlGenericSelfClosing()
+        osccss.TagName = "link"
+        osccss.Attributes.Add("rel", "stylesheet")
+        osccss.Attributes.Add("type", "text/css")
+        osccss.Attributes("href") = ResolveUrl("~/content/OSC.css")
+        htmlHeader.Controls.Add(osccss)
 
-        Dim css2 As New HtmlGenericSelfClosing()
-        css2.TagName = "link"
-        css2.Attributes.Add("rel", "stylesheet")
-        css2.Attributes.Add("type", "text/css")
-        css2.Attributes("href") = ResolveUrl("~/content/bootstrap.min.css")
-        htmlHeader.Controls.Add(css2)
+        Dim oscjs As New HtmlGenericControl("script")
+        oscjs.Attributes("type") = "text/javascript"
+        oscjs.Attributes("src") = ResolveUrl("~/Scripts/OSC.js")
+        htmlHeader.Controls.Add(oscjs)
 
+        ' Others
+        Dim pscss As New HtmlGenericSelfClosing()
+        pscss.TagName = "link"
+        pscss.Attributes.Add("rel", "stylesheet")
+        pscss.Attributes.Add("type", "text/css")
+        pscss.Attributes.Add("media", "print")
+        pscss.Attributes("href") = ResolveUrl("~/content/ProSolutionPrint.css")
+        htmlHeader.Controls.Add(pscss)
 
-        Dim cssp As New HtmlGenericSelfClosing()
-        cssp.TagName = "link"
-        cssp.Attributes.Add("rel", "stylesheet")
-        cssp.Attributes.Add("type", "text/css")
-        cssp.Attributes.Add("media", "print")
-        cssp.Attributes("href") = ResolveUrl("~/content/ProSolutionPrint.css")
-        htmlHeader.Controls.Add(cssp)
-
-        Dim css3 As New HtmlGenericSelfClosing()
-        css3.TagName = "link"
-        css3.Attributes.Add("rel", "stylesheet")
-        css3.Attributes.Add("type", "text/css")
-        css3.Attributes("href") = ResolveUrl("~/content/custom.css")
-        htmlHeader.Controls.Add(css3)
-
-
+        Dim cuscss As New HtmlGenericSelfClosing()
+        cuscss.TagName = "link"
+        cuscss.Attributes.Add("rel", "stylesheet")
+        cuscss.Attributes.Add("type", "text/css")
+        cuscss.Attributes("href") = ResolveUrl("~/content/custom.css")
+        htmlHeader.Controls.Add(cuscss)
 
         Dim css5 As New HtmlGenericSelfClosing()
         css5.TagName = "link"
         css5.Attributes.Add("rel", "stylesheet")
         css5.Attributes.Add("type", "text/css")
-
 
         If WorkingData.ShoppingCart.ContainsItemsOfType("Enrolment") Then
             css5.Attributes("href") = GetResourceValue("EnrolmentCalendarCSS")
@@ -119,8 +157,6 @@ Partial Class UserControlMasterPage
 
         htmlHeader.Controls.Add(css5)
 
-
-
         Dim js2 As New HtmlGenericControl("script")
         js2.Attributes("type") = "text/javascript"
         js2.Attributes("src") = ResolveUrl("~/Scripts/respond.min.js")
@@ -130,22 +166,6 @@ Partial Class UserControlMasterPage
         js3.Attributes("type") = "text/javascript"
         js3.Attributes("src") = ResolveUrl("~/Scripts/html5shiv.js")
         htmlHeader.Controls.Add(js3)
-
-
-
-        If Toastr.UseToastr Then
-            Dim js7 As New HtmlGenericControl("script")
-            js7.Attributes("type") = "text/javascript"
-            js7.Attributes("src") = ResolveUrl("~/Scripts/toastr.min.js")
-            htmlHeader.Controls.Add(js7)
-        End If
-
-
-
-        Dim js5 As New HtmlGenericControl("script")
-        js5.Attributes("type") = "text/javascript"
-        js5.Attributes("src") = ResolveUrl("~/Scripts/bootstrap.min.js")
-        htmlHeader.Controls.Add(js5)
 
         Dim js4 As New HtmlGenericControl("script")
         js4.Attributes("type") = "text/javascript"

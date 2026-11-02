@@ -31,9 +31,9 @@
                 Session("LastError") = exceptionContainer
 
                 'Need to do this to not destroy the session
-                Server.ClearError()
+                'Server.ClearError()
 
-                Response.Redirect("~/GenericError.aspx")
+                'Response.Redirect("~/GenericError.aspx")
             End If
 
         Catch ex As Exception

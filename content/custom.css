@@ -264,7 +264,7 @@ header{
 /* Aligns with the primary color (#525ddc) and modern, professional design from osc.ac.uk */
 /* Text color set to black for better readability */
 
-input,
+/*input,
 select,
 textarea,
 .form-control, .form-input {
@@ -272,28 +272,28 @@ textarea,
     border-radius: 4px;
     padding: 0.6rem 0.75rem;
     font-size: 1rem;
-    font-family: "Montserrat", Arial, sans-serif; /* Matches p, a font-family in custom.css */
-    color: #000000; /* Black font for text */
-    background-color: #fff;
+    font-family: "Montserrat", Arial, sans-serif;*/ /* Matches p, a font-family in custom.css */
+    /*color: #000000;*/ /* Black font for text */
+    /*background-color: #fff;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height:4rem;
-}
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);*/
+    /*height:4rem;*/
+/*}
 
     input:focus,
     select:focus,
     textarea:focus,
     .form-control:focus {
-        border-color: #525ddc; /* Primary color from BasePage.html CSS variables */
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(82, 93, 220, 0.25); /* Subtle glow using primary color with transparency */
-    }
+        border-color: #525ddc;*/ /* Primary color from BasePage.html CSS variables */
+        /*outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(82, 93, 220, 0.25);*/ /* Subtle glow using primary color with transparency */
+    /*}
 
     input::placeholder,
     textarea::placeholder,
     .form-control::placeholder {
-        color: #6c757d; /* Standard muted text color */
-    }
+        color: #6c757d;*/ /* Standard muted text color */
+    /*}
 
     input[type="radio"],
     input[type="checkbox"] {
@@ -311,7 +311,7 @@ button[type="submit"],
     font-size: 1rem;
     font-family: "Montserrat", Arial, sans-serif;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-}
+}*/
 
     button[type="submit"]:hover,
     .btn:hover {
@@ -332,14 +332,14 @@ button[type="submit"],
 }
 
 /* Consistent submit button styling to match theme */
-button[type="submit"],
+/*button[type="submit"],
 input[type="submit"],
 .button {
-    background: #000; /* Black background */
-    color: #fff; /* White text */
-    border: none;
-    border-radius: 50px; /* Pill shape */
-    padding: 14px 32px;
+    background: #000;*/ /* Black background */
+    /*color: #fff;*/ /* White text */
+    /*border: none;
+    border-radius: 50px;*/ /* Pill shape */
+    /*padding: 14px 32px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -355,9 +355,9 @@ input[type="submit"],
     button[type="submit"]:hover,
     input[type="submit"]:hover,
     .button:hover {
-        background: #333333; /* Darker black on hover */
-        color: var(--white-color);
-    }
+        background: #333333;*/ /* Darker black on hover */
+        /*color: var(--white-color);
+    }*/
 
 .list-group-item-heading {
     font-size: 16px;

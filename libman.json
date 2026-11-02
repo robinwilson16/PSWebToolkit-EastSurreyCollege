@@ -1,0 +1,36 @@
+{
+  "version": "3.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "jsdelivr",
+      "library": "jquery@4.0.0",
+      "destination": "Scripts/jquery/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "jquery-migrate@4.0.2",
+      "destination": "Scripts/jquery-migrate/"
+    },
+    {
+      "library": "jqueryui@1.14.2",
+      "destination": "Scripts/jquery-ui/"
+    },
+    {
+      "library": "twitter-bootstrap@6.0.0-alpha.1",
+      "destination": "Scripts/bootstrap/"
+    },
+    {
+      "library": "font-awesome@7.3.1",
+      "destination": "Scripts/font-awesome/"
+    },
+    {
+      "library": "moment.js@2.31.0",
+      "destination": "Scripts/momentjs/"
+    },
+    {
+      "library": "marked@18.1.2",
+      "destination": "Scripts/marked/"
+    }
+  ]
+}

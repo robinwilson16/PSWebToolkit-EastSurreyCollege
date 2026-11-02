@@ -294,6 +294,33 @@
   <data name="checkout_enquiries" xml:space="preserve">
     <value>~/webenrolment.aspx?page=~/webcontrols/checkout_enquiries.ascx</value>
   </data>
+  <data name="apply_courseapply" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/courseapply.ascx</value>
+  </data>
+  <data name="apply_personal_details" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/personal_details.ascx</value>
+  </data>
+  <data name="apply_next_of_kin" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/next_of_kin.ascx</value>
+  </data>
+  <data name="apply_further_details" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/further_details.ascx</value>
+  </data>
+  <data name="apply_quals_on_entry" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/quals_on_entry.ascx</value>
+  </data>
+  <data name="apply_employment" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/employment.ascx</value>
+  </data>
+  <data name="apply_attachments" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/attachments.ascx</value>
+  </data>
+  <data name="apply_photo" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/photo.ascx</value>
+  </data>
+  <data name="apply_data_protection" xml:space="preserve">
+    <value>~/webenrolment.aspx?page=~/additional/apply/data_protection.ascx</value>
+  </data>
   <data name="ConfirmationEmailContents" xml:space="preserve">
     <value>Thank you for submitting your request. We have received it successfully and will be in touch soon. 
 

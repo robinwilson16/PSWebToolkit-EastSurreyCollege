@@ -1,0 +1,68 @@
+﻿.bd-callout {
+    --bs-link-color: var(--bd-callout-color);
+    --bs-link-hover-color: var(--bd-callout-color);
+    --bs-code-color: var(--bd-callout-color);
+    color: var(--bd-callout-color,var(--bs-body-color));
+    background-color: var(--bd-callout-bg,var(--bs-gray-100));
+    border: 1px solid var(--bd-callout-border,var(--bs-border-color));
+    border-radius: var(--bs-radius-5);
+    padding: 1rem 1rem 1rem 1.75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    position: relative;
+    container-type: inline-size
+}
+
+    .bd-callout:before {
+        --bs-offset: .5rem;
+        inset: var(--bs-offset) auto var(--bs-offset) var(--bs-offset);
+        content: "";
+        background-color: var(--bd-callout-band,var(--bd-callout-border,var(--bs-gray-300)));
+        border-radius: var(--bs-radius-2);
+        width: .25rem;
+        position: absolute
+    }
+
+    .bd-callout h4 {
+        margin-bottom: .25rem
+    }
+
+    .bd-callout a, .bd-callout code {
+        color: color-mix(in oklch, var(--bd-callout-color), var(--bs-fg-body) 50%);
+        font-weight: 500
+    }
+
+    .bd-callout > :last-child {
+        margin-bottom: 0
+    }
+
+    .bd-callout + .bd-callout {
+        margin-top: -.25rem
+    }
+
+@container (width>=768px) {
+    .bd-callout {
+        padding: 1.25rem
+    }
+}
+
+.bd-callout-info {
+    --bd-callout-color: var(--bs-info-fg-emphasis);
+    --bd-callout-bg: color-mix(in oklch, var(--bs-info-bg-subtle), transparent 50%);
+    --bd-callout-border: var(--bs-info-border);
+    --bd-callout-band: color-mix(in oklch, var(--bs-info-border), var(--bs-info-fg-emphasis))
+}
+
+.bd-callout-warning {
+    --bd-callout-color: var(--bs-warning-fg-emphasis);
+    --bd-callout-bg: color-mix(in oklch, var(--bs-warning-bg-subtle), transparent 50%);
+    --bd-callout-border: var(--bs-warning-border);
+    --bd-callout-band: color-mix(in oklch, var(--bs-warning-border), var(--bs-warning-fg-emphasis))
+}
+
+.bd-callout-danger {
+    --bd-callout-color: var(--bs-danger-fg-emphasis);
+    --bd-callout-bg: color-mix(in oklch, var(--bs-danger-bg-subtle), transparent 50%);
+    --bd-callout-border: var(--bs-danger-border);
+    --bd-callout-band: color-mix(in oklch, var(--bs-danger-border), var(--bs-danger-fg-emphasis))
+}
