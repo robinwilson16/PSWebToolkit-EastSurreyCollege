@@ -20,8 +20,8 @@ Partial Class quals_on_entry
     Protected Overrides Sub OnLoad(ByVal e As System.EventArgs)
         MyBase.OnLoad(e)
 
-        SetAgeChecks()
         GetCourseDetails()
+        SetAgeChecks()
 
         If IsUnder18 = True Then
             fldPriorAttainmentLevelID.ExcludedIDValues = "07,08,09,10,98"
@@ -380,7 +380,7 @@ Partial Class quals_on_entry
                 WorkingData.EnrolmentRequestRow.StudyElsewhere = False
             End If
 
-            redirectString = GetResourceValue("checkout_employment_FE_aspx")
+            redirectString = GetResourceValue("apply_data_protection")
             Response.Redirect(redirectString)
 
         End If
@@ -396,7 +396,7 @@ Partial Class quals_on_entry
 
         If Me.Page.IsValid Then
 
-            redirectString = GetResourceValue("checkout_enrolments2_FE_aspx")
+            redirectString = GetResourceValue("apply_further_details")
             Response.Redirect(redirectString)
 
         End If
@@ -404,8 +404,11 @@ Partial Class quals_on_entry
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
             If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then

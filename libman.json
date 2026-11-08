@@ -31,6 +31,11 @@
     {
       "library": "marked@18.1.2",
       "destination": "Scripts/marked/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jSignature@2.1.3",
+      "destination": "Scripts/jSignature/"
     }
   ]
 }

@@ -50,3 +50,12 @@
     --bd-callout-border: #92C947;
     --bd-callout-band: #92C947;
 }
+
+a.theme-danger {
+    background-color: #E62845;
+    color: #FFFFFF;
+}
+
+.theme-danger h4.alert-heading {
+    color: #E62845;
+}

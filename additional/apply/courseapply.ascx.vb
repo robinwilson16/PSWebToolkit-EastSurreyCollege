@@ -1,5 +1,5 @@
 Option Explicit On
-Option Strict On
+Option Strict Off
 
 Imports System.Collections.Generic
 Imports System.Linq
@@ -47,9 +47,20 @@ Partial Class courseapply
     Protected Overrides Sub OnLoad(ByVal e As System.EventArgs)
         MyBase.OnLoad(e)
 
-        If OfferingID() > 0 Then
-            NewOfferingRow = OfferingDataTable.FetchByOfferingID(OfferingID())
+        If Not IsPostBack Then
+            Dim i As Byte = 1
+            For Each c As ShoppingCartItem In WorkingData.ShoppingCart.Items
+                c.ChoiceNumber = i
+                i = CByte(i + 1)
+            Next
+        End If
 
+        PutAllOfferingsInBasket()
+
+        If WorkingData.ShoppingCart.Items.Count > 0 Then
+            If OfferingID() > 0 Then
+                NewOfferingRow = OfferingDataTable.FetchByOfferingID(OfferingID())
+            End If
 
             If Not IsNothing(NewOfferingRow) Then
                 CourseInformationTitle = CourseInformationDataTableAdapter.GetCourseInformationDescription(CInt(NewOfferingRow.CourseInformationID))
@@ -61,8 +72,6 @@ Partial Class courseapply
 
             If Not IsPostBack Then
                 WorkingData.EnrolmentRequestRow.RefNo = RefNo()
-                PutAllOfferingsInBasket()
-
             Else
 
                 Page.MaintainScrollPositionOnPostBack = True
@@ -73,6 +82,9 @@ Partial Class courseapply
             OfferingRow = tblOffering.NewRow
             OfferingTypeRow = tblOfferingType.NewRow
         End If
+
+        rptOfferings.DataSource = tblOffering
+        rptOfferings.DataBind()
     End Sub
 
     ''Put offerings in basket
@@ -83,7 +95,7 @@ Partial Class courseapply
 
         'Add new Offering to the list of offerings
         Dim stb As New Text.StringBuilder
-        If OfferingID > 0 Then
+        If OfferingID > 0 And Not IsPostBack Then
             stb.Append(OfferingID)
         End If
 
@@ -145,7 +157,7 @@ Partial Class courseapply
                     Session("RequestMode") = RequestMode.ApplicationRequest
                 End With
                 With WorkingData.ShoppingCart
-                    If Not .Items.Contains(item) Then
+                    If Not .Items.Any(Function(existingItem As ShoppingCartItem) existingItem.OfferingID = item.OfferingID) Then
                         .Items.Add(item)
                     End If
                 End With
@@ -162,6 +174,45 @@ Partial Class courseapply
 
     End Sub
 
+    Protected Sub RemoveFromBasket_Click(sender As Object, e As EventArgs)
+        Dim btn As LinkButton = DirectCast(sender, LinkButton)
+
+        If btn.CommandName = "Delete" Then
+            Dim offeringID As Integer = CInt(btn.CommandArgument)
+            Do While WorkingData.ShoppingCart.Items.Any(Function(item As ShoppingCartItem) item.OfferingID = offeringID)
+                WorkingData.ShoppingCart.Items.Remove(offeringID)
+            Loop
+
+            Dim i As Byte = 1
+            For Each item As ShoppingCartItem In WorkingData.ShoppingCart.Items
+                item.ChoiceNumber = i
+                i = CByte(i + 1)
+            Next
+
+            'Dim query = System.Web.HttpUtility.ParseQueryString(Request.Url.Query)
+            'query.Remove("OfferingID")
+
+            'Dim redirectUrl As String = Request.Url.AbsolutePath
+
+            'If query.Count > 0 Then
+            '    redirectUrl &= "?" & query.ToString()
+            'End If
+
+            'Response.Redirect(redirectUrl, False)
+            'Context.ApplicationInstance.CompleteRequest()
+
+            'PutAllOfferingsInBasket()
+
+            tblOffering.Clear()
+            PutAllOfferingsInBasket()
+
+            rptOfferings.DataSource = tblOffering
+            rptOfferings.DataBind()
+        End If
+    End Sub
+
+
+
     Public Overrides Sub RenderControl(writer As HtmlTextWriter)
 
         MyBase.RenderControl(writer)
@@ -174,5 +225,4 @@ Partial Class courseapply
     '        Dim OfferingID As Integer = CInt(DataBinder.Eval(e.Row.DataItem, "OfferingID"))
     '    End If
     'End Sub
-
 End Class

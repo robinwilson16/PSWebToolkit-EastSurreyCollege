@@ -1,3 +1,24 @@
+/* Make Checkboxes Larger */
+input[type=checkbox] {
+    width: 1.4em;
+    height: 1.4em;
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+
+/* Fix alignment issues when label is seperate */
+.form-group > span > div > span {
+    margin-bottom: 8px;
+}
+
+/* Signature Panel */
+.student-signature-pad {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #FFFFFF;
+}
+
 /* Move Radio Buttons To One Line */
 table.TableInline {
     display: inline-block;
@@ -35,6 +56,33 @@ table.TableInline tr:last-child td {
 }
 
 table.TableInline tr td input {
+    margin-right: 4px;
+}
+
+/* Format Radio Buttons across multiple lines */
+table.TableNotInline {
+    margin-left: 0em;
+    margin-right: 0em;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+table.TableNotInline tr {
+    display: inline-block;
+    margin-left: 0em;
+    margin-right: 0em;
+}
+
+table.TableNotInline tr td {
+    border: 1px solid #CCCCCC;
+    background-color: #FFFFFF;
+    padding: 14px;
+    margin: 0px;
+    border-radius: 8px;
+}
+
+table.TableNotInline tr td input {
     margin-right: 4px;
 }
 

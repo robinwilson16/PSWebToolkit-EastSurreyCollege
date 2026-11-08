@@ -29,47 +29,43 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="https://apply.osc.ac.uk"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
+                <a class="breadcrumb-link" href="https://www.osc.ac.uk/"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/apply/courseapply.ascx"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-basket-shopping"></i>&nbsp;Basket</a>
+            </li>
+            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+            <li class="breadcrumb-item">
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-calendar-days"></i>&nbsp;<%=OfferingRow.AcademicYearID %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-user"></i>&nbsp;Personal Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-users"></i>&nbsp;Emergency Contact Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/personal_details.ascx"><i class="fa-solid fa-user"></i>&nbsp;Personal Details</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-clipboard-list"></i>&nbsp;Further Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/next_of_kin.ascx"><i class="fa-solid fa-users"></i>&nbsp;Emergency Contact Details</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-award"></i>&nbsp;Qualifications on Entry</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/further_details.ascx"><i class="fa-solid fa-clipboard-list"></i>&nbsp;Further Details</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-city"></i>&nbsp;Employment Status</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/quals_on_entry.ascx"><i class="fa-solid fa-award"></i>&nbsp;Qualifications on Entry</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-paperclip"></i>&nbsp;Documents/Evidence</a>
-            </li>
-            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
-            <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-camera"></i>&nbsp;Photo Upload</a>
-            </li>
-            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
-            <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link active" href="#"><i class="fa-solid fa-circle-info"></i>&nbsp;Privacy Notice</a>
+                <a class="breadcrumb-link active" href="webenrolment.aspx?page=~/additional/apply/data_protection.ascx"><i class="fa-solid fa-circle-info"></i>&nbsp;Privacy Notice</a>
             </li>
         </ol>
     </nav>
@@ -181,19 +177,21 @@
 <div class="bd-callout mt-5 mb-5">
     <h4><i class="fa-solid fa-check"></i> Confirmation</h4>
     
+
     <div class="form-input">
-      <span class="textfieldlabelrequired"></span><span class="textfieldlabelrequired3"> After you enrol, we would like to send you details of services the College has to offer to support your study and your time here at the College. However, you can unsubscribe from those emails at any time.</span>
-            <asp:DropDownList runat="server" ID="selectStayingInTouch"  CssClass="form-input" >
-                <asp:ListItem Text="--Please Select--" Value=""></asp:ListItem>
+        <span class="textfieldlabelrequired"></span><span class="textfieldlabelrequired3"> After you enrol, we would like to send you details of services the College has to offer to support your study and your time here at the College. However, you can unsubscribe from those emails at any time.</span>
+        <div class="sm:col-12 columns form-group">
+            <asp:RadioButtonList runat="server" ID="selectStayingInTouch" CssClass="form-input TableNotInline">
                 <asp:ListItem Text="Yes - please use my contact details to keep me informed of services the College has to offer to support my study and my time here at the College" Value="1"></asp:ListItem>
                 <asp:ListItem Text="No - I do not wish to receive details of services the College has to offer to support my study and my time here at the College" Value="2"></asp:ListItem>
-            </asp:DropDownList>
+            </asp:RadioButtonList>
             <asp:CustomValidator ID="selectStayingInTouchValidator" runat="server"></asp:CustomValidator>
-          </div>
+        </div>
+    </div>
 
         <div class="form-input">
       <span class="textfieldlabelrequired"></span><span class="textfieldlabelrequired3"> I consent to the use of SMS text message by the college with regarding to my enrolment and course.</span>
-            <asp:DropDownList runat="server" ID="selectSMSConsent"  CssClass="form-input" >
+            <asp:DropDownList runat="server" ID="selectSMSConsent"  CssClass="form-control" >
                 <asp:ListItem Text="--Please Select--" Value=""></asp:ListItem>
                 <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                 <asp:ListItem Text="No" Value="2"></asp:ListItem>
@@ -226,20 +224,20 @@
     </div>
        
     <div class="form-input">
-        <p><b>Please tick to acknowledge the above statements:</b></p>
+        <strong>Please tick to acknowledge the above statements:</strong><br />
      <asp:CheckBox ID="chkConfirm" runat="server" 
-            Text="" Font-Bold="True" CausesValidation="True" ClientIDMode="Static" /> 
+            Text="" Font-Bold="True" CausesValidation="True" ClientIDMode="Static" CssClass="check check-lg" /> 
 
         <asp:CustomValidator ID="chkConfirmValidator" runat="server"></asp:CustomValidator>
     </div>
 
-    <div class="form-input">
+    <%--<div class="form-input">
         <p><b>Please sign to acknowledge the above statements:</b></p>
-        <uc1:StudentSignature ID="signature" runat="server" />
+        <uc1:StudentSignature ID="signature" runat="server" ClientIDMode="Static" />
         <asp:CheckBox ID="IsSigned" runat="server" ClientIDMode="Static" class="d-none" />
         <asp:CheckBox ID="IsSignedComplex" runat="server" ClientIDMode="Static" class="d-none" /> 
         <asp:CustomValidator ID="signatureValidator" runat="server"></asp:CustomValidator>
-    </div>
+    </div>--%>
 
 </div>
 
@@ -254,7 +252,7 @@
         <div class="row">
             <div class="col">
                 <button type="button" class="btn-solid btn-styled theme-secondary btn-lg BackButton"><i class="fa-solid fa-angles-left"></i> Back</button>
-                <cc1:CCCButton ID="btnBack" LinkResource="apply_photo" CssClass="d-none" class="d-none" ClientIDMode="Static" runat="server" Text="Back" ImageResource="btnBack" CausesValidation="false" />
+                <cc1:CCCButton ID="btnBack" LinkResource="apply_quals_on_entry" CssClass="d-none" class="d-none" ClientIDMode="Static" runat="server" Text="Back" ImageResource="btnBack" CausesValidation="false" />
             </div>
             <div class="col text-end">
                 <span class="d-grid gap-2 md:d-block">
@@ -268,21 +266,30 @@
         </div>
     </div>
 </div>
+
 <style>
+    .student-signature-pad {
+        width: auto;
+        max-width: 500px;
+    }
 
-    input[type=checkbox]{
-
-        margin-inline-start:100px;
-        width:50px;
-        height:30px;
-     
-
+    #signature_clear {
+        width: auto;
+        max-width: 500px;
     }
 </style>
 
-
 <script>
-    document.addEventListener("DOMContentLoaded", (event) => {
+    addEventListener("DOMContentLoaded", (event) => {
+        //Fix theme on jSignature clear button
+        let signatureClearButton = document.getElementById(`signature_clear`);
+        if (signatureClearButton) {
+            signatureClearButton.classList.remove(`btn`, `btn-danger`);
+            signatureClearButton.classList.add(`btn-solid`, `btn-styled`, `theme-danger`);
+            signatureClearButton.innerHTML = `<i class="fa-solid fa-trash"></i> Clear Signature`; 
+        }
+        
+
         //Marketing Info
         let rdo = document.getElementsByName("<%= selectStayingInTouch.UniqueID%>");
         let chkSentMarktingInfo = document.getElementById(`ctl00_MainContentPlaceholder_ctl00_fldConsent_chkSentMarktingInfo`);
@@ -294,26 +301,26 @@
         }
 
         //Signature
-        let signature = document.getElementById(`signature`);
-        let clear = document.getElementById(`clear`);
+        //let signature = document.getElementById(`signature_signature`);
+        //let clear = document.getElementById(`clear`);
 
-        signature.addEventListener(`mouseup`, (event) => {
-            checkSignature();
-        });
-        signature.addEventListener(`touchend`, (event) => {
-            checkSignature();
-        });
-        clear.addEventListener(`click`, (event) => {
-            setTimeout(() => {
-                checkSignature();
-            }, "200");
-        });
+        //signature.addEventListener(`mouseup`, (event) => {
+        //    checkSignature();
+        //});
+        //signature.addEventListener(`touchend`, (event) => {
+        //    checkSignature();
+        //});
+        //clear.addEventListener(`click`, (event) => {
+        //    setTimeout(() => {
+        //        checkSignature();
+        //    }, "200");
+        //});
     });
 
     function checkSignature() {
         let isSigned = document.getElementById(`IsSigned`);
         let isSignedComplex = document.getElementById(`IsSignedComplex`);
-        let signatureComplexity = $("#signature").jSignature('getData', 'base30')[1].length;
+        let signatureComplexity = $("#signature_signature").jSignature('getData', 'base30')[1].length;
         let signatureIsSigned = signatureComplexity > 0 ? true : false;
         let signatureIsComplex = signatureComplexity > 75 ? true : false;
 

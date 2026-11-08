@@ -21,10 +21,12 @@ Partial Class personal_details
     Public IsUnder19 As Boolean
     Public IsUnder18 As Boolean
 
-    Protected Overrides Sub OnLoad(e As EventArgs)
+    Public MinAgeAllowed As Integer = 15
+    Public MaxAgeAllowed As Integer = 70
 
-        SetAgeChecks()
+    Protected Overrides Sub OnLoad(e As EventArgs)
         GetCourseDetails()
+        SetAgeChecks()
 
         If IsUnder19 = False Then
             fldNI.IsRequired = True
@@ -196,8 +198,11 @@ Partial Class personal_details
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not String.IsNullOrEmpty(fldDateOfBirth.Value) Then
             dateOfBirthDate = CType(fldDateOfBirth.Value, Date)
@@ -306,8 +311,8 @@ Partial Class personal_details
             End If
 
             Dim dateToCheckDOB As Date = CDate(Today().Year & "-08-31")
-            Dim minAllowedDOB As Date = dateToCheckDOB.AddYears(-16)
-            Dim maxAllowedDOB As Date = dateToCheckDOB.AddYears(-70)
+            Dim minAllowedDOB As Date = dateToCheckDOB.AddYears(-MinAgeAllowed)
+            Dim maxAllowedDOB As Date = dateToCheckDOB.AddYears(-MaxAgeAllowed)
 
             If String.IsNullOrEmpty(fldDateOfBirth.Value) Then
                 fldDateOfBirthValidator.ErrorMessage = "Please enter your Date of Birth"
@@ -315,12 +320,12 @@ Partial Class personal_details
                 fldDateOfBirthValidator.CssClass = "error alert alert-danger"
                 fldDateOfBirth.CssClass = "ErrorInput"
             ElseIf Not IsNothing(dateOfBirthDate) And dateOfBirthDate > minAllowedDOB Then
-                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged under 16 (on " & dateToCheckDOB.ToString("dd MMM yyyy") & ")"
+                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged under " & MinAgeAllowed & " (on " & dateToCheckDOB.ToString("dd MMM yyyy") & ")"
                 fldDateOfBirthValidator.IsValid = False
                 fldDateOfBirthValidator.CssClass = "error alert alert-danger"
                 fldDateOfBirth.CssClass = "ErrorInput"
             ElseIf Not IsNothing(dateOfBirthDate) And dateOfBirthDate < maxAllowedDOB Then
-                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged over 70 (on " & dateToCheckDOB.ToString("dd MMM yyyy") & ")"
+                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged over " & MaxAgeAllowed & " (on " & dateToCheckDOB.ToString("dd MMM yyyy") & ")"
                 fldDateOfBirthValidator.IsValid = False
                 fldDateOfBirthValidator.CssClass = "error alert alert-danger"
                 fldDateOfBirth.CssClass = "ErrorInput"
@@ -338,21 +343,21 @@ Partial Class personal_details
         End If
 
         'National Insurance Number
-        Dim regexNI As New Regex("^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$")
-        If Not IsNothing(fldNI.Value) Then
-            Dim match As Match = regexNI.Match(fldNI.Value)
-            If String.IsNullOrEmpty(fldNI.Value) And IsUnder19 = False Then
-                fldNIValidator.ErrorMessage = "National Insurance Number must not be blank for anyone 19+"
-                fldNIValidator.IsValid = False
-                fldNIValidator.CssClass = "error alert alert-danger"
-                fldNI.CssClass = "ErrorInput"
-            ElseIf Not match.Success And CStr(fldNI.Value).Length > 0 Then
-                fldNIValidator.ErrorMessage = "Please enter a valid National Insurance Number"
-                fldNIValidator.IsValid = False
-                fldNIValidator.CssClass = "error alert alert-danger"
-                fldNI.CssClass = "ErrorInput"
-            End If
-        End If
+        'Dim regexNI As New Regex("^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$")
+        'If Not IsNothing(fldNI.Value) Then
+        '    Dim match As Match = regexNI.Match(fldNI.Value)
+        '    If String.IsNullOrEmpty(fldNI.Value) And IsUnder19 = False Then
+        '        fldNIValidator.ErrorMessage = "National Insurance Number must not be blank for anyone 19+"
+        '        fldNIValidator.IsValid = False
+        '        fldNIValidator.CssClass = "error alert alert-danger"
+        '        fldNI.CssClass = "ErrorInput"
+        '    ElseIf Not match.Success And CStr(fldNI.Value).Length > 0 Then
+        '        fldNIValidator.ErrorMessage = "Please enter a valid National Insurance Number"
+        '        fldNIValidator.IsValid = False
+        '        fldNIValidator.CssClass = "error alert alert-danger"
+        '        fldNI.CssClass = "ErrorInput"
+        '    End If
+        'End If
 
         'Criminal Convictions
         If Not IsNothing(fldCriminalConvictionID.Value) Then
@@ -448,18 +453,18 @@ Partial Class personal_details
         End If
 
         If ddCollegeAccomodation.SelectedValue = "" Then
-            Dim a As New CustomValidator
-            a.IsValid = False
-            a.ErrorMessage = "Please confirm if you will you be living in College accommodation"
-            Me.Page.Validators.Add(a)
+            ddCollegeAccomodationValidator.ErrorMessage = "Please confirm if you will you be living in College accommodation"
+            ddCollegeAccomodationValidator.IsValid = False
+            ddCollegeAccomodationValidator.CssClass = "error alert alert-danger"
+            'ddCollegeAccomodation.CssClass = "ErrorInput"
             ddCollegeAccomodation.Style.Add("border", "1px solid red")
         End If
 
         If RadioButtonListAlt.SelectedValue = "" Then
-            Dim a As New CustomValidator
-            a.IsValid = False
-            a.ErrorMessage = "Please confirm if your term time address is different to your home address"
-            Me.Page.Validators.Add(a)
+            RadioButtonListAltValidator.ErrorMessage = "Please confirm if your term time address is different to your home address"
+            RadioButtonListAltValidator.IsValid = False
+            RadioButtonListAltValidator.CssClass = "error alert alert-danger"
+            'RadioButtonListAlt.CssClass = "ErrorInput"
             RadioButtonListAlt.Style.Add("border", "1px solid red")
         End If
 

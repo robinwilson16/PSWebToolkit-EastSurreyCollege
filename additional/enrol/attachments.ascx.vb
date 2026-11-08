@@ -37,8 +37,8 @@ Partial Class attachments
     Protected Overrides Sub OnLoad(e As EventArgs)
         MyBase.OnLoad(e)
 
-        SetAgeChecks()
         GetCourseDetails()
+        SetAgeChecks()
 
         'Response.Write("----" + WorkingData.EnrolmentRequestEmploymentHistory(0).EmploymentStatusID)
         'Response.Write(WorkingData.EnrolmentRequestRow.StudentDetailUserDefined42)
@@ -409,7 +409,7 @@ Partial Class attachments
         If Me.Page.IsValid Then
 
 
-            Response.Redirect(GetResourceValue("checkout_photo_FE_aspx"))
+            Response.Redirect(GetResourceValue("apply_photo"))
 
         End If
 
@@ -429,8 +429,11 @@ Partial Class attachments
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
             If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then

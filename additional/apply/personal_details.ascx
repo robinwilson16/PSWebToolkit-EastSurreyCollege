@@ -38,19 +38,27 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="https://apply.osc.ac.uk"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
+                <a class="breadcrumb-link" href="https://www.osc.ac.uk/"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/apply/courseapply.ascx"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-basket-shopping"></i>&nbsp;Basket</a>
+            </li>
+            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+            <li class="breadcrumb-item">
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-calendar-days"></i>&nbsp;<%=OfferingRow.AcademicYearID %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link active" href="#"><i class="fa-solid fa-user"></i>&nbsp;Personal Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
+            </li>
+            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+            <li class="breadcrumb-item" aria-current="page">
+                <a class="breadcrumb-link active" href="webenrolment.aspx?page=~/additional/apply/personal_details.ascx"><i class="fa-solid fa-user"></i>&nbsp;Personal Details</a>
             </li>
         </ol>
     </nav>
@@ -176,7 +184,7 @@
 </div>
 
 <div class="bd-callout mt-5 mb-5">
-    <h4><i class="fa-solid fa-handcuffs"></i> Criminal Convictions</h4>
+    <h4><i class="fa-solid fa-scale-balanced"></i> Criminal Convictions</h4>
 
         <p>We must ask you to provide details of any <strong>unspent</strong> criminal convictions. You do not need to tell us about any spent convictions, as defined by the Rehabilitation of Offenders Act 1974, unless your course involves access to children and young adults under the age of 18. If you are enrolled to such a course, any failure to disclose such convictions may result in the College asking you to withdraw. Any information you give will be completely confidential and is only considered in relation to this enrolment.</p>
         
@@ -282,19 +290,19 @@
     </div>
 </div>
 
-<div class="bd-callout bd-callout-askham-warning bd-callout-fees d-none" id="DevolvedFeesInfo">
+<div class="bd-callout bd-callout-warning bd-callout-fees d-none" id="DevolvedFeesInfo">
     <h4><i class="fa-solid fa-landmark"></i> Funding Details</h4>
     <p>
         Please note, over 19s are usually liable for course fees. As you live in the <span id="DevolvedAreaName">[DEVOLVED AREA]</span> devolved area <strong>your course fees will be higher</strong>. 
     </p>
     <p>
-        Askham Bryan College receives government funding which allows us to offer courses at a lower cost. The guidelines relating to devolution means that we cannot apply this funding to learners who live in devolved areas. 
+        Orbital South Colleges receive government funding which allows us to offer courses at a lower cost. The guidelines relating to devolution means that we cannot apply this funding to learners who live in devolved areas. 
     </p>
     <p>
-        Before committing to a course with Askham Bryan College, we would recommend that you explore options to study the course in your local area. If the course you have chosen is not available in your local area, it may be worth checking with your devolved education team to see if they will fund your course with Askham Bryan.
+        Before committing to a course with Orbital South Colleges, we would recommend that you explore options to study the course in your local area. If the course you have chosen is not available in your local area, it may be worth checking with your devolved education team to see if they will fund your course with Orbital South Colleges.
     </p>
     <p>
-        If you would prefer to continue your application with Askham Bryan College please note that the price of the course <strong>could be doubled the advertised cost</strong>. Definitive fees can only be confirmed at point of enrolment (usually in September).
+        If you would prefer to continue your application with Orbital South Colleges please note that the price of the course <strong>could be doubled the advertised cost</strong>. Definitive fees can only be confirmed at point of enrolment (usually in September).
     </p>
     <p>
         You may be able to find support for these fees based on your personal circumstances. Please confirm you acknowledge this.
@@ -345,6 +353,7 @@
                 <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                 <asp:ListItem Text="No" Value="0"></asp:ListItem>
             </asp:RadioButtonList>
+            <asp:CustomValidator ID="ddCollegeAccomodationValidator" runat="server"></asp:CustomValidator>
         </div>
     </div>
 
@@ -356,6 +365,7 @@
                 <asp:ListItem Text="No, it is the same" Value="2"></asp:ListItem>
                 <asp:ListItem Text="Yes, it is different" Value="1"></asp:ListItem>
             </asp:RadioButtonList>
+            <asp:CustomValidator ID="RadioButtonListAltValidator" runat="server"></asp:CustomValidator>
         </div>
     </div>
 
@@ -652,12 +662,12 @@
         }
 
         async function getFundingSourceinfo(postcode) {
-            await fetch(`https://api.askham-bryan.ac.uk/DevolvedAreaPostCode/${postcode}`, {
+            await fetch(`https://api.osc.ac.uk/DevolvedAreaPostCode/${postcode}`, {
                 method: `GET`,
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    'Origin': 'https://mis.askham-bryan.ac.uk/'
+                    'Origin': 'https://apply.osc.ac.uk/'
                 }
             })
                 .then(response => response.json())

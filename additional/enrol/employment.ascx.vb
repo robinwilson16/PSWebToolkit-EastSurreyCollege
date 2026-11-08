@@ -18,8 +18,8 @@ Partial Class employment
     Protected Overrides Sub OnLoad(e As EventArgs)
         MyBase.OnLoad(e)
 
-        SetAgeChecks()
         GetCourseDetails()
+        SetAgeChecks()
 
         Is19PlusOutsideAreaConfirmed = CBool(Session("19PlusOutsideAreaConfirmed"))
 
@@ -161,8 +161,11 @@ Partial Class employment
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
             If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then

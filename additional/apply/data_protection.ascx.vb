@@ -21,8 +21,8 @@ Partial Class data_protection
     Protected Overrides Sub OnLoad(e As EventArgs)
         MyBase.OnLoad(e)
 
-        SetAgeChecks()
         GetCourseDetails()
+        SetAgeChecks()
 
         If WorkingData.EnrolmentRequestRow.AcceptMarketingConsent = True Then
             selectStayingInTouch.SelectedValue = "1"
@@ -61,19 +61,19 @@ Partial Class data_protection
             End If
         End If
 
-        If Not IsNothing(IsSigned) And Not IsNothing(IsSignedComplex) Then
-            If Not IsSigned.Checked = True Then
-                signatureValidator.ErrorMessage = "Please sign to confirm that you acknowledge the statements above."
-                signatureValidator.IsValid = False
-                signatureValidator.CssClass = "error alert alert-danger"
-                Signature.Attributes.Add("Class", "textfield form-control ErrorInput")
-            ElseIf Not IsSignedComplex.Checked = True Then
-                signatureValidator.ErrorMessage = "Please sign your name more fully to confirm that you acknowledge the statements above."
-                signatureValidator.IsValid = False
-                signatureValidator.CssClass = "error alert alert-danger"
-                Signature.Attributes.Add("Class", "textfield form-control ErrorInput")
-            End If
-        End If
+        'If Not IsNothing(IsSigned) And Not IsNothing(IsSignedComplex) Then
+        '    If Not IsSigned.Checked = True Then
+        '        signatureValidator.ErrorMessage = "Please sign to confirm that you acknowledge the statements above."
+        '        signatureValidator.IsValid = False
+        '        signatureValidator.CssClass = "error alert alert-danger"
+        '        signature.Attributes.Add("Class", "textfield form-control ErrorInput")
+        '    ElseIf Not IsSignedComplex.Checked = True Then
+        '        signatureValidator.ErrorMessage = "Please sign your name more fully to confirm that you acknowledge the statements above."
+        '        signatureValidator.IsValid = False
+        '        signatureValidator.CssClass = "error alert alert-danger"
+        '        signature.Attributes.Add("Class", "textfield form-control ErrorInput")
+        '    End If
+        'End If
 
         MyBase.ValidateControl()
     End Sub
@@ -81,7 +81,7 @@ Partial Class data_protection
     Private Sub CheckData()
 
         WorkingData.EnrolmentRequestRow.SentMarketingInfo = selectStayingInTouch.SelectedValue
-        WorkingData.EnrolmentRequestRow.StudentSignature = Signature.Signature
+        'WorkingData.EnrolmentRequestRow.StudentSignature = Signature.Signature
 
     End Sub
 
@@ -117,8 +117,11 @@ Partial Class data_protection
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
             If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then

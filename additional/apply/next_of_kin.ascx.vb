@@ -26,8 +26,9 @@ Partial Class next_of_kin
 
     Protected Overrides Sub OnLoad(e As EventArgs)
         ConsentRequired = True
-        SetAgeChecks()
+
         GetCourseDetails()
+        SetAgeChecks()
 
         If IsUnder19 Then 'Under 18
             ConsentRequired = True
@@ -197,8 +198,11 @@ Partial Class next_of_kin
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
             If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then

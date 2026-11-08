@@ -49,6 +49,12 @@ Partial Class UserControlMasterPage
 
         Dim htmlHeader As HtmlHead = CType(Page.Master.FindControl("headtag"), HtmlHead)
 
+        '' jQuery --Added in HTML
+        'Dim jqjs As New HtmlGenericControl("script")
+        'jqjs.Attributes("type") = "text/javascript"
+        'jqjs.Attributes("src") = ResolveUrl("~/Scripts/jquery/dist/jquery.min.js")
+        'htmlHeader.Controls.Add(jqjs)
+
         ' jQuery UI
         Dim jqUIcss As New HtmlGenericControl()
         jqUIcss.TagName = "link"
@@ -62,11 +68,11 @@ Partial Class UserControlMasterPage
         jqUIjs.Attributes("src") = ResolveUrl("~/Scripts/jquery-ui/jquery-ui.min.js")
         htmlHeader.Controls.Add(jqUIjs)
 
-        ' jQuery
-        Dim jqjs As New HtmlGenericControl("script")
-        jqjs.Attributes("type") = "text/javascript"
-        jqjs.Attributes("src") = ResolveUrl("~/Scripts/jquery/dist/jquery.min.js")
-        htmlHeader.Controls.Add(jqjs)
+        'jSignature
+        'Dim jSigJS As New HtmlGenericControl("script")
+        'jSigJS.Attributes("type") = "text/javascript"
+        'jSigJS.Attributes("src") = ResolveUrl("~/Scripts/jSignature/jSignature.min.js")
+        'htmlHeader.Controls.Add(jSigJS)
 
         ' Bootstrap
         Dim bscss As New HtmlGenericSelfClosing()

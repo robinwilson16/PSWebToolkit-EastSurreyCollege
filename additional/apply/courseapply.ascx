@@ -15,15 +15,23 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a class="breadcrumb-link" href="https://apply.osc.ac.uk"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
+                                <a class="breadcrumb-link" href="https://www.osc.ac.uk/"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
                             </li>
                             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
                             <li class="breadcrumb-item">
-                                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/apply/courseapply.ascx"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
+                                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-basket-shopping"></i>&nbsp;Basket</a>
+                            </li>
+                            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+                            <li class="breadcrumb-item">
+                                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
                             </li>
                             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
                             <li class="breadcrumb-item" aria-current="page">
-                                <a class="breadcrumb-link active" href="#"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
+                                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-calendar-days"></i>&nbsp;<%=OfferingRow.AcademicYearID %></a>
+                            </li>
+                            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+                            <li class="breadcrumb-item" aria-current="page">
+                                <a class="breadcrumb-link active" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
                             </li>
                         </ol>
                     </nav>
@@ -32,7 +40,7 @@
                 <div class="progress mt-5 mb-5" role="progressbar" aria-label="Progress..." aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
                     <div class="progress-bar bg-primary" style="width: 10%">10%</div>
                 </div>
-
+                
                 <div class="bd-callout mt-5 mb-5">
                     <h4><i class="fa-solid fa-graduation-cap"></i> Course Information</h4>
 
@@ -69,49 +77,61 @@
                             </EmptyDataTemplate>
                         </asp:GridView>
                     </div>--%>
-
-                    <div class="container">
-                        <%For Each crs In tblOffering %>
-                            <%
-'Dim OfferingRow = OfferingDataTable.FetchByOfferingID(crs.OfferingID)
-                            %>
+                    
+                    <asp:Repeater ID="rptOfferings" runat="server">
+                        <ItemTemplate>
                             <div class="row">
                                 <div class="md:col">
                                     <div class="card mt-3">
                                         <div class="card-body">
-                                            <h4><i class="fa-solid fa-award"></i> <%=crs.Name%></h4>
                                             <div class="row">
-                                                <div class="sm:col-6 md:col-3">
-                                                    <strong>Start Date:</strong>
+                                                <div class="form-group md:col-10 xl:col-11">
+                                                    <h4><i class="fa-solid fa-award"></i> <%# Eval("AcademicYearID")%> - <%# Eval("Name")%></h4>
+                                                    <div class="row">
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <strong>Start Date:</strong>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <%# If(Not (IsNothing(Eval("StartDate"))), Eval("StartDate"), "")%>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <strong>End Date:</strong>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <%# If(Not (IsNothing(Eval("EndDate"))), Eval("EndDate"), "")%>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <strong>Course Code:</strong>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <%# Eval("Code")%>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <strong>Campus:</strong>
+                                                        </div>
+                                                        <div class="sm:col-6 md:col-3">
+                                                            <%# Eval("SiteDescription")%>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <%=If(Not (IsNothing(crs.StartDate)), crs.StartDate.Value.ToString("dd/MM/yyyy"), "")%>
-                                                </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <strong>End Date:</strong>
-                                                </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <%=If(Not (IsNothing(crs.EndDate)), crs.EndDate.Value.ToString("dd/MM/yyyy"), "")%>
-                                                </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <strong>Course Code:</strong>
-                                                </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <%=crs.Code%>
-                                                </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <strong>Campus:</strong>
-                                                </div>
-                                                <div class="sm:col-6 md:col-3">
-                                                    <%=crs.SiteDescription%>
+                                                <div class="form-group md:col-2 xl:col-1 text-right">
+                                                    <asp:LinkButton
+                                                        runat="server"
+                                                        CssClass="btn-solid btn-styled theme-danger"
+                                                        OnClick="RemoveFromBasket_Click"
+                                                        CommandName="Delete"
+                                                        CommandArgument='<%# Eval("OfferingID") %>'>
+                                                        <h3><i class="fa-solid fa-trash"></i></h3>
+                                                    </asp:LinkButton>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <%Next%>
-                    </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+
                 </div>
 
                 <div class="bd-callout bd-callout-warning mt-5 mb-5">
@@ -171,23 +191,22 @@
                 </div>
             </div>
 
-            <%--<cc1:CCCButton ID="btnContinue6" runat="server" Text="Start " CssClass="button" LinkResource="checkout_enrolments_FE_aspx" />--%>
-
             <% Else %>
-                <div class="alert theme-danger" role="alert">
+                <div class="alert theme-warning" role="alert">
                     <div class="row">
                         <div class="sm:col-1">
-                            <h3><i class="fa-solid fa-triangle-exclamation"></i></h3>
+                            <h1><i class="fa-solid fa-basket-shopping"></i></h1>
                         </div>
                         <div class="sm:col-11">
-                            <h4 class="alert-heading">Course Not Found</h4>
-                            <p>Sorry this course was not found or is not set up for applications</p>
-                            <p class="text-center"><a class="btn-solid btn-styled theme-danger" href="https://www.osc.ac.uk/" role="button"><i class="fa-solid fa-rotate-left"></i> Return to the Orbital South Colleges Website</a></p>
+                            <h4 class="alert-heading mb-2">No Courses in Basket</h4>
+                            <p>You have no courses in your basket.</p>
+                            <p class="text-center"><a class="btn-solid btn-styled theme-primary" href="https://www.osc.ac.uk/" role="button"><i class="fa-solid fa-rotate-left"></i> Return to the Orbital South Colleges Website To Select a Course</a></p>
                             <hr>
-                            <p class="mb-0">Contact the Admissions Team on <i class="fa-solid fa-phone"></i> <a href="tel:000">000</a> or by email at <i class="fa-solid fa-envelope"></i> <a href="mailto:xxx@osc.ac.uk?subject=Course Not Found on Website">xxx@osc.ac.uk</a></p>
+                            <p class="mb-0">Contact the Admissions Team on <i class="fa-solid fa-phone"></i> <a href="tel:01737 772611">01737 772611</a> or by email at <i class="fa-solid fa-envelope"></i> <a href="mailto:clientservices@esc.ac.uk?subject=No Courses in Basket">clientservices@esc.ac.uk</a></p>
                         </div>
                     </div>
                 </div>
         <% End If %>
     </div>
 </div>
+<asp:Label ID="Test" runat="server" />

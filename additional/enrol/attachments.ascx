@@ -10,39 +10,47 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="https://apply.osc.ac.uk"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
+                <a class="breadcrumb-link" href="https://www.osc.ac.uk/"><i class="fa-solid fa-house"></i>&nbsp;Orbital South Colleges</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/apply/courseapply.ascx"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-basket-shopping"></i>&nbsp;Basket</a>
+            </li>
+            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+            <li class="breadcrumb-item">
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-book"></i>&nbsp;<%=OfferingRow.CollegeLevelCode%> - <%=OfferingRow.CollegeLevelName %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-calendar-days"></i>&nbsp;<%=OfferingRow.AcademicYearID %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-user"></i>&nbsp;Personal Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/courseapply.ascx&OfferingID=<%=OfferingRow.OfferingID %>"><i class="fa-solid fa-graduation-cap"></i>&nbsp;<%=OfferingRow.Code%> - <%=OfferingRow.Name %></a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-users"></i>&nbsp;Emergency Contact Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/personal_details.ascx"><i class="fa-solid fa-user"></i>&nbsp;Personal Details</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-clipboard-list"></i>&nbsp;Further Details</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/next_of_kin.ascx"><i class="fa-solid fa-users"></i>&nbsp;Emergency Contact Details</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-award"></i>&nbsp;Qualifications on Entry</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/further_details.ascx"><i class="fa-solid fa-clipboard-list"></i>&nbsp;Further Details</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link" href="#"><i class="fa-solid fa-city"></i>&nbsp;Employment Status</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/quals_on_entry.ascx"><i class="fa-solid fa-award"></i>&nbsp;Qualifications on Entry</a>
             </li>
             <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
             <li class="breadcrumb-item" aria-current="page">
-                <a class="breadcrumb-link active" href="#"><i class="fa-solid fa-paperclip"></i>&nbsp;Documents/Evidence</a>
+                <a class="breadcrumb-link" href="webenrolment.aspx?page=~/additional/apply/employment.ascx"><i class="fa-solid fa-city"></i>&nbsp;Employment Status</a>
+            </li>
+            <li class="breadcrumb-divider"><i class="fa-solid fa-angles-right"></i></li>
+            <li class="breadcrumb-item" aria-current="page">
+                <a class="breadcrumb-link active" href="webenrolment.aspx?page=~/additional/apply/attachments.ascx"><i class="fa-solid fa-paperclip"></i>&nbsp;Documents/Evidence</a>
             </li>
         </ol>
     </nav>
@@ -69,25 +77,25 @@
             </p>
 
     <div class="row">
-        <div class="md:col-12 mb-4 d-flex align-items-stretch">
+        <div class="col mb-4">
             <div class="card w-100">
-                <div class="card-body d-flex flex-column">
+                <div class="card-body">
                     <div class="row">
-                        <div class="form-group md:col-6 xl:col-3">
+                        <div class="form-group md:col-6 xl:col-3 mb-2">
                             <label for="ddlTypeOfEvidence">Type of Evidence</label>
                             <asp:DropDownList ID="ddlTypeOfEvidence" runat="server" CSSClass="form-control">
                                 <asp:ListItem Text="Select" Value=""></asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="form-group md:col-6 xl:col-4">
+                        <div class="form-group md:col-6 xl:col-4 mb-2">
                             <label for="txtNotes">Notes</label>
                             <asp:TextBox ID="txtNotes" runat="server" TextMode="MultiLine" Rows="4" CssClass="form-control"></asp:TextBox>
                         </div>
-                        <div class="form-group md:col-6 xl:col-3">
-                            <label for="fuAttachment" class="mb-2">File</label>
+                        <div class="form-group md:col-6 xl:col-3 mb-2">
+                            <label for="fuAttachment" class="">File</label>
                             <cc1:CCCFileUpload ID="fuAttachment" runat="server" data-html="true"  ClientIDMode="static"  IsRequired="true" SupportedFileTypes=".jpg, .jpeg, .png, .gif, .bmp, .heic, .pdf, .doc, .docx" accept=".jpg,.jpeg,.png,.gif,.bmp,.heic,.pdf,.doc,.docx" MaxAllowedFileSize="5000" MaxAllowedFileSizeErrorMessage="File size is larger than 5 MB" CSSClass="form-control pt-2 pb-3" />
                         </div>
-                        <div class="form-group md:col-6 xl:col-2 text-end mt-auto">
+                        <div class="form-group md:col-6 xl:col-2 text-end mt-auto mb-2">
                             <asp:LinkButton ID="btnUpload" runat="server" CssClass="btn-solid btn-styled theme-primary" CausesValidation="False"><i class="fa-solid fa-file-import"></i> Upload</asp:LinkButton>
                         </div>
                         <asp:CustomValidator ID="ddlTypeOfEvidenceValidator" runat="server"></asp:CustomValidator>
@@ -117,14 +125,12 @@
     
      <%If rptAttachments.Items.Count = 0 %>
         <div runat="server" visible="<%#rptAttachments.Items.Count = 0 %>">
-            <div class="alert alert-primary hstack gap-3" role="alert">
+            <div class="alert theme-warning hstack gap-3" role="alert">
                 <div>
                     <i class="fa-solid fa-file-import"></i>
                 </div>
                 <div>
-                    <p>
-                        No files uploaded yet
-                    </p>
+                    No files uploaded yet
                 </div>
             </div>
         </div>
@@ -170,7 +176,7 @@
         <cc1:StudentEnrolmentField runat="server" ID="StudentDetailUserDefined25" CustomFieldType="Lookup" StudentEnrolmentFieldType="StudentDetailUserDefined25" ClientIDMode="Static" CustomCaption="Can't upload your file/s at the moment - please select a reason why"  />
     </div>
 
-    <div id="UploadWarning" class="alert alert-warning hstack gap-3 d-none" role="alert">
+    <div id="UploadWarning" class="alert theme-warning hstack gap-3 d-none" role="alert">
         <div>
             <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
@@ -183,7 +189,7 @@
             </p>
             <ul>
                 <li>
-                    Email a photograph of your ID and Certificates to <a href="mailto:enrolment-enquiries@askham-bryan.ac.uk?subject=Cannot Upload Evidence">enrolment-enquiries@askham-bryan.ac.uk</a>. Please include your <strong>full name</strong> in the subject line.
+                    Email a photograph of your ID and Certificates to <a href="mailto:xxx@osc.ac.uk?subject=Cannot Upload Evidence">xxx@osc.ac.uk</a>. Please include your <strong>full name</strong> in the subject line.
                 </li>
                 <li>
                     Bring your ID and Certificates to college in person <strong>before</strong> the start date of your course and we can take a copy.

@@ -14,6 +14,13 @@
     <meta name="document-type" content="Public" />
     <meta name="country" content="uk" />
 
+    <!-- favicons inc-->
+    <link rel="icon" type="image/png" href="https://www.osc.ac.uk/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="https://www.osc.ac.uk/favicon.svg" />
+    <link rel="shortcut icon" href="https://www.osc.ac.uk/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.osc.ac.uk/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ESC" />
+    <!--/ favicons inc-->
 
     <link rel="stylesheet" href="https://www.osc.ac.uk/wp-content/themes/C4/assets/css/main.css">
     <link rel="stylesheet" href="https://www.osc.ac.uk/wp-content/themes/C4/assets/css/additions.css">
@@ -1335,7 +1342,7 @@
         }
         /*# sourceURL=global-styles-inline-css */
     </style>
-
+    <script type="text/javascript" src="/PSWebEnrolment/Scripts/jquery/dist/jquery.min.js"></script> <!-- Added by Robin to fix jQuery issues in later scripts-->
     <script src="https://www.osc.ac.uk/wp-content/themes/C4/assets/js/script.js"></script>
     <script src="https://www.osc.ac.uk/wp-content/themes/C4/assets/js/jquery.aos.min.js"></script>
 

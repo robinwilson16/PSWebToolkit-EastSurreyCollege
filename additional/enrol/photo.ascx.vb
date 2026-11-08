@@ -23,8 +23,8 @@ Partial Class photo
 
         MyBase.OnLoad(e)
 
-        SetAgeChecks()
         GetCourseDetails()
+        SetAgeChecks()
 
         If Not WorkingData.EnrolmentRequestRow.Photo Is Nothing Then
             Dim base64String As String = Convert.ToBase64String(WorkingData.EnrolmentRequestRow.Photo, 0, WorkingData.EnrolmentRequestRow.Photo.Length)
@@ -194,14 +194,17 @@ Partial Class photo
         Me.Page.Validate()
 
         If Me.Page.IsValid Then
-            Response.Redirect(GetResourceValue("checkout_dataprotection_FE_aspx"))
+            Response.Redirect(GetResourceValue("apply_data_protection"))
         End If
 
     End Sub
 
     Public Function SetAgeChecks() As Boolean
+        Dim academicYear As String = OfferingRow.AcademicYearID
+        Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
+
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(Today().Year & "-08-31")
+        Dim referenceDate As DateTime = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
             If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then
