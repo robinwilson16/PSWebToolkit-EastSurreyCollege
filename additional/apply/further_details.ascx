@@ -220,8 +220,8 @@
 
     <div class="row">
         <div class="sm:col-12 columns form-group"> 
-            <span class="textfieldlabelrequired">Are you are care leaver?</span>
-            <p>Have you recently left care (care leaver)? - A care leaver is a young person aged 16-25 who has been 'looked after' at some point by a local authority (for example placed with foster carers) since the age of 14, and in care on or after their 16th birthday</p>
+            <span class="textfieldlabelrequired">Have you recently left care (Care Leaver)?</span>
+            <p>A care leaver is a young person aged 16-25 who has been 'looked after' at some point by a local authority (for example placed with foster carers) since the age of 14, and in care on or after their 16th birthday</p>
             <asp:RadioButtonList runat="server" ID="fldCareLeaver" CssClass="form-input TableInline">
                 <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
                 <asp:ListItem Text="No" Value="No"></asp:ListItem>
@@ -243,6 +243,18 @@
         </div>
     </div>
     <%End If %>
+
+    <div class="row">
+        <div class="sm:col-12 columns form-group"> 
+            <span class="textfieldlabelrequired">Do you have an educational health care plan (EHCP)?</span>
+            <p>A legal document that outlines the educational and health care needs of a student</p>
+            <asp:RadioButtonList runat="server" ID="fldEHCP" CssClass="form-input TableInline">
+                <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                <asp:ListItem Text="No" Value="No"></asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:CustomValidator ID="fldEHCPValidator" runat="server"></asp:CustomValidator>
+        </div>
+    </div>
 
     <%--<div class="row">
         <div class="sm:col-12 columns form-group mb-3">

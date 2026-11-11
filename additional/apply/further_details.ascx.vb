@@ -36,7 +36,7 @@ Partial Class further_details
             If WorkingData.EnrolmentRequestRow.NationalityID = "" Then
                 WorkingData.EnrolmentRequestRow.InCare = Nothing
                 WorkingData.EnrolmentRequestRow.CareLeaver = Nothing
-                WorkingData.EnrolmentRequestRow.YoungCarer = Nothing
+                WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = Nothing
                 WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = Nothing
                 WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = Nothing
                 WorkingData.EnrolmentRequestRow.YoungParent = Nothing
@@ -64,6 +64,12 @@ Partial Class further_details
                 fldYoungCarer.SelectedValue = "Yes"
             ElseIf WorkingData.EnrolmentRequestRow.YoungCarer = False Then
                 fldYoungCarer.SelectedValue = "No"
+            End If
+
+            If WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = True Then
+                fldEHCP.SelectedValue = "Yes"
+            ElseIf WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = False Then
+                fldEHCP.SelectedValue = "No"
             End If
 
             If WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = True Then
@@ -446,6 +452,14 @@ Partial Class further_details
             fldYoungCarer.Style.Add("border", "1px solid red")
         End If
 
+        If fldEHCP.SelectedValue = "" Then
+            fldEHCPValidator.ErrorMessage = "Please confirm if you have an educational health care plan"
+            fldEHCPValidator.IsValid = False
+            fldEHCPValidator.CssClass = "error alert alert-danger"
+            'fldEHCP.CssClass = "ErrorInput"
+            fldEHCP.Style.Add("border", "1px solid red")
+        End If
+
         If fldFreeSchoolMeals.SelectedValue = "" And IsUnder19 = True Then
             fldFreeSchoolMealsValidator.ErrorMessage = "Please confirm if you were eligible for free school meals at school"
             fldFreeSchoolMealsValidator.IsValid = False
@@ -530,6 +544,12 @@ Partial Class further_details
                 WorkingData.EnrolmentRequestRow.YoungCarer = True
             ElseIf fldYoungCarer.SelectedValue = "No" Then
                 WorkingData.EnrolmentRequestRow.YoungCarer = False
+            End If
+
+            If fldEHCP.SelectedValue = "Yes" Then
+                WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = True
+            ElseIf fldEHCP.SelectedValue = "No" Then
+                WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = False
             End If
 
             If fldFreeSchoolMeals.SelectedValue = "Yes" Then
