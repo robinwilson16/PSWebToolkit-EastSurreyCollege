@@ -71,7 +71,7 @@ Partial Class courseapply
             End If
 
             If Not IsPostBack Then
-                WorkingData.EnrolmentRequestRow.RefNo = RefNo()
+                WorkingData.ApplicationRequestRow.RefNo = RefNo()
             Else
 
                 Page.MaintainScrollPositionOnPostBack = True

@@ -42,6 +42,7 @@ Partial Class further_details
                 WorkingData.EnrolmentRequestRow.YoungCarer = Nothing
                 WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = Nothing
                 WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = Nothing
+                WorkingData.EnrolmentRequestRow.YoungCarer = Nothing
                 WorkingData.EnrolmentRequestRow.YoungParent = Nothing
             End If
 

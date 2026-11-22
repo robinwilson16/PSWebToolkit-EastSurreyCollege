@@ -5,6 +5,11 @@
         font-family: Montserrat, Helvetica, sans-serif;
     }
 
+    .body-content {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
     .thankyou-container {
         max-width: 800px;
         margin: 0 auto;

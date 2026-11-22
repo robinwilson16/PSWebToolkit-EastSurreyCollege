@@ -3,8 +3,8 @@
 <%@ Register Assembly="PSWebEnrolmentKit" Namespace="CompassCC.ProSolution.PSWebEnrolmentKit"
     TagPrefix="cc1" %>
 
-        <!--The CourseEnrolAction adds the offering to the basket as an Enrolment-->
-    <cc1:CourseEnrolAction ID="CourseEnrolAction" runat="server" />
+<!--The CourseApplyAction adds the offering to the basket as an application-->
+<cc1:CourseApplyAction ID="CourseApplyAction" runat="server" />
     
 <div class="container">
     <div class="row">
@@ -142,9 +142,7 @@
                     <ul class="list-group">
                         <li class="list-group-item icon listcheck"> Your address details, mobile number and a personal email address</li>
                         <li class="list-group-item icon listcheck"> Your parent, guardian or carer emergency contact details</li>
-                        <li class="list-group-item icon listcheck"> One form of ID</li>
-                        <li class="list-group-item icon listcheck"> A headshot photograph</li>
-                        <li class="list-group-item icon listcheck"> Your National Insurance Number if you are over 19</li>
+                        <li class="list-group-item icon listcheck"> Your Education, Health and Care Plan (EHCP), if you have one</li>
                         <li class="list-group-item icon listcheck"> Evidence of qualifications including English and/or Maths and your grades</li>
                     </ul>
                 </div>

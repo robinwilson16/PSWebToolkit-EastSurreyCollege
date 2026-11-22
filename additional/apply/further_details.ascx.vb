@@ -29,87 +29,88 @@ Partial Class further_details
         SetAgeChecks()
         SetUKResident()
 
-        'Response.Write(WorkingData.EnrolmentRequestRow.StudentDetailUserDefined58)
+        'Response.Write(WorkingData.ApplicationRequestRow.StudentDetailUserDefined58)
         'If Not Session("agecourse") Is Nothing Then lblAgeCourse.Text = CType("Your age on " & Session("startdate") & ": " & Session("agecourse") & " (" & Session("ageGroup"), String) & ")"
 
         If Not IsPostBack Then
             If Convert.ToString(Session("dis")) <> "" Then selectLearnDiff.SelectedValue = Convert.ToString(Session("dis"))
 
             'Booleans default to false when not set
-            If WorkingData.EnrolmentRequestRow.NationalityID = "" Then
-                WorkingData.EnrolmentRequestRow.InCare = Nothing
-                WorkingData.EnrolmentRequestRow.CareLeaver = Nothing
-                WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = Nothing
-                WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = Nothing
-                WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = Nothing
-                WorkingData.EnrolmentRequestRow.YoungParent = Nothing
+            If WorkingData.ApplicationRequestRow.NationalityID = "" Then
+                WorkingData.ApplicationRequestRow.InCareDuration = Nothing 'InCare not available in ApplicationRequest
+                WorkingData.ApplicationRequestRow.CareLeaver = Nothing
+                WorkingData.ApplicationRequestRow.HasEducationHealthCarePlan = Nothing
+                WorkingData.ApplicationRequestRow.ReceivedFreeSchoolMeals = Nothing
+                WorkingData.ApplicationRequestRow.ParentCarerInArmedForces = Nothing
+                WorkingData.ApplicationRequestRow.YoungCarer = Nothing
+                WorkingData.ApplicationRequestRow.YoungParent = Nothing
             End If
 
-            If WorkingData.EnrolmentRequestRow.StudentDetailUserDefined49 = "True" Then
+            If WorkingData.ApplicationRequestRow.StudentDetailUserDefined49 = "True" Then
                 fldRightToWorkInUK.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.StudentDetailUserDefined49 = "False" Then
+            ElseIf WorkingData.ApplicationRequestRow.StudentDetailUserDefined49 = "False" Then
                 fldRightToWorkInUK.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.InCare = True Then
+            If WorkingData.ApplicationRequestRow.InCareDuration = "1" Then
                 fldInCare.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.InCare = False Then
+            ElseIf WorkingData.ApplicationRequestRow.InCareDuration = "0" Then
                 fldInCare.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.CareLeaver = True Then
+            If WorkingData.ApplicationRequestRow.CareLeaver = True Then
                 fldCareLeaver.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.CareLeaver = False Then
+            ElseIf WorkingData.ApplicationRequestRow.CareLeaver = False Then
                 fldCareLeaver.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.YoungCarer = True Then
+            If WorkingData.ApplicationRequestRow.YoungCarer = True Then
                 fldYoungCarer.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.YoungCarer = False Then
+            ElseIf WorkingData.ApplicationRequestRow.YoungCarer = False Then
                 fldYoungCarer.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = True Then
+            If WorkingData.ApplicationRequestRow.HasEducationHealthCarePlan = True Then
                 fldEHCP.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = False Then
+            ElseIf WorkingData.ApplicationRequestRow.HasEducationHealthCarePlan = False Then
                 fldEHCP.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = True Then
+            If WorkingData.ApplicationRequestRow.ReceivedFreeSchoolMeals = True Then
                 fldFreeSchoolMeals.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = False Then
+            ElseIf WorkingData.ApplicationRequestRow.ReceivedFreeSchoolMeals = False Then
                 fldFreeSchoolMeals.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = True Then
+            If WorkingData.ApplicationRequestRow.ParentCarerInArmedForces = True Then
                 fldMilitaryServiceChild.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = False Then
+            ElseIf WorkingData.ApplicationRequestRow.ParentCarerInArmedForces = False Then
                 fldMilitaryServiceChild.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.YoungParent = True Then
+            If WorkingData.ApplicationRequestRow.YoungParent = True Then
                 fldKnownToSocialCare.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.YoungParent = False Then
+            ElseIf WorkingData.ApplicationRequestRow.YoungParent = False Then
                 fldKnownToSocialCare.SelectedValue = "No"
             End If
 
         End If
 
-        ' postcode.Value = WorkingD ata.EnrolmentRequestRow.PostcodeOut & WorkingData.EnrolmentRequestRow.PostcodeIn
+        ' postcode.Value = WorkingData.ApplicationRequestRow.PostcodeOut & WorkingData.ApplicationRequestRow.PostcodeIn
 
         If selectLearnDiff.SelectedValue = "1" Then
             slidingdiv.Visible = True
         Else
             intCurrentDisability = 0
-            WorkingData.EnrolmentRequestDisabilityCategory.Clear()
+            WorkingData.ApplicationRequestDisabilityCategory.Clear()
             slidingdiv.Visible = False
         End If
 
     End Sub
     Public Function SetUKResident() As Boolean
-        If IsNothing(WorkingData.EnrolmentRequestRow.CountryID) Then
+        If IsNothing(WorkingData.ApplicationRequestRow.CountryID) Then
             IsUKResident = True 'Not set yet so default to UK
-        ElseIf WorkingData.EnrolmentRequestRow.CountryID = "GB" Or WorkingData.EnrolmentRequestRow.CountryID = "XF" Then
+        ElseIf WorkingData.ApplicationRequestRow.CountryID = "GB" Or WorkingData.ApplicationRequestRow.CountryID = "XF" Then
             IsUKResident = True
         Else
             IsUKResident = False
@@ -416,7 +417,7 @@ Partial Class further_details
             Me.Page.Validators.Add(v)
         End If
 
-        'If selectLearnDiff.SelectedValue = "1" And CType("" & WorkingData.EnrolmentRequestRow.DisabilityCategory1ID, String) = CType("" & WorkingData.EnrolmentRequestRow.DisabilityCategory2ID, String) Then
+        'If selectLearnDiff.SelectedValue = "1" And CType("" & WorkingData.ApplicationRequestRow.DisabilityCategory1ID, String) = CType("" & WorkingData.ApplicationRequestRow.DisabilityCategory2ID, String) Then
         '    Dim v As New CustomValidator
         '    v.ErrorMessage = "Primary 'main' condition and Secondary condition must not be the same"
         '    v.IsValid = False
@@ -518,7 +519,7 @@ Partial Class further_details
 
         Session("dis") = selectLearnDiff.SelectedValue
 
-        If Convert.ToString(Session("dis")) <> "" Then WorkingData.EnrolmentRequestRow.LearningDiffOrDisID = Convert.ToString(Session("dis"))
+        If Convert.ToString(Session("dis")) <> "" Then WorkingData.ApplicationRequestRow.LearningDiffOrDisID = Convert.ToString(Session("dis"))
 
         Me.Page.Validate()
 
@@ -526,51 +527,51 @@ Partial Class further_details
 
             'Capture Yes/No fields
             If fldRightToWorkInUK.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.StudentDetailUserDefined49 = "True"
+                WorkingData.ApplicationRequestRow.StudentDetailUserDefined49 = "True"
             ElseIf fldRightToWorkInUK.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.StudentDetailUserDefined49 = "False"
+                WorkingData.ApplicationRequestRow.StudentDetailUserDefined49 = "False"
             End If
 
             If fldInCare.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.InCare = True
+                WorkingData.ApplicationRequestRow.InCareDuration = "1"
             ElseIf fldInCare.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.InCare = False
+                WorkingData.ApplicationRequestRow.InCareDuration = "0"
             End If
 
             If fldCareLeaver.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.CareLeaver = True
+                WorkingData.ApplicationRequestRow.CareLeaver = True
             ElseIf fldCareLeaver.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.CareLeaver = False
+                WorkingData.ApplicationRequestRow.CareLeaver = False
             End If
 
             If fldYoungCarer.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.YoungCarer = True
+                WorkingData.ApplicationRequestRow.YoungCarer = True
             ElseIf fldYoungCarer.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.YoungCarer = False
+                WorkingData.ApplicationRequestRow.YoungCarer = False
             End If
 
             If fldEHCP.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = True
+                WorkingData.ApplicationRequestRow.HasEducationHealthCarePlan = True
             ElseIf fldEHCP.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.HasEducationHealthCarePlan = False
+                WorkingData.ApplicationRequestRow.HasEducationHealthCarePlan = False
             End If
 
             If fldFreeSchoolMeals.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = True
+                WorkingData.ApplicationRequestRow.ReceivedFreeSchoolMeals = True
             ElseIf fldFreeSchoolMeals.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.ReceivedFreeSchoolMeals = False
+                WorkingData.ApplicationRequestRow.ReceivedFreeSchoolMeals = False
             End If
 
             If fldMilitaryServiceChild.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = True
+                WorkingData.ApplicationRequestRow.ParentCarerInArmedForces = True
             ElseIf fldMilitaryServiceChild.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.ParentCarerInArmedForces = False
+                WorkingData.ApplicationRequestRow.ParentCarerInArmedForces = False
             End If
 
             If fldKnownToSocialCare.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.YoungParent = True
+                WorkingData.ApplicationRequestRow.YoungParent = True
             ElseIf fldKnownToSocialCare.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.YoungParent = False
+                WorkingData.ApplicationRequestRow.YoungParent = False
             End If
 
             Response.Redirect(GetResourceValue("apply_quals_on_entry"))
@@ -584,7 +585,7 @@ Partial Class further_details
         ' Me.Page.Validate()
 
         Session("dis") = selectLearnDiff.SelectedValue
-        If Convert.ToString(Session("dis")) <> "" Then WorkingData.EnrolmentRequestRow.LearningDiffOrDisID = Convert.ToString(Session("dis"))
+        If Convert.ToString(Session("dis")) <> "" Then WorkingData.ApplicationRequestRow.LearningDiffOrDisID = Convert.ToString(Session("dis"))
 
         Response.Redirect(GetResourceValue("apply_next_of_kin"))
 
@@ -599,9 +600,9 @@ Partial Class further_details
         Dim dateOfBirthDate As Date?
         ReferenceDate = CDate(referenceDataString)
 
-        If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
-                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
+        If Not IsNothing(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value), Date)
             End If
 
             Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)

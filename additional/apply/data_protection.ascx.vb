@@ -82,7 +82,7 @@ Partial Class data_protection
 
     Private Sub CheckData()
 
-        WorkingData.EnrolmentRequestRow.SentMarketingInfo = selectStayingInTouch.SelectedValue
+        WorkingData.ApplicationRequestRow.SentMarketingInfo = selectStayingInTouch.SelectedValue
         'WorkingData.EnrolmentRequestRow.StudentSignature = Signature.Signature
 
     End Sub
@@ -96,15 +96,15 @@ Partial Class data_protection
             CheckData()
 
             If selectStayingInTouch.SelectedValue = "1" Then
-                WorkingData.EnrolmentRequestRow.AcceptMarketingConsent = True
+                WorkingData.ApplicationRequestRow.AcceptMarketingConsent = True
             End If
 
             If selectSMSConsent.SelectedValue = "1" Then
-                WorkingData.EnrolmentRequestRow.CanBeContactBySMS = True
+                WorkingData.ApplicationRequestRow.CanBeContactBySMS = True
             End If
             'used to store age but now clear them down
-            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined1 = ""
-            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined2 = ""
+            WorkingData.ApplicationRequestRow.StudentDetailUserDefined1 = ""
+            WorkingData.ApplicationRequestRow.StudentDetailUserDefined2 = ""
             ''to avoid going to payment provider, no fees for 1618
             Dim item As New ShoppingCartItem()
             With WorkingData.ShoppingCart
@@ -125,9 +125,9 @@ Partial Class data_protection
         Dim dateOfBirthDate As Date?
         ReferenceDate = CDate(referenceDataString)
 
-        If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
-                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
+        If Not IsNothing(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value), Date)
             End If
 
             Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)

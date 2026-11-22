@@ -26,14 +26,25 @@ Partial Class quals_on_entry
         GetCourseDetails()
         SetAgeChecks()
 
+        'Booleans default to false when not set
+        If WorkingData.ApplicationRequestRow.PriorAttainmentLevelID = "" Then
+            WorkingData.ApplicationRequestRow.StillAtLastSchool = Nothing
+        End If
+
         If IsUnder18 = True Then
             fldPriorAttainmentLevelID.ExcludedIDValues = "07,08,09,10,98"
         End If
 
         If Not IsPostBack Then
-            If WorkingData.EnrolmentRequestRow.StudyElsewhere = True Then
+            If WorkingData.ApplicationRequestRow.StillAtLastSchool = True Then
+                fldStillAtSchool.SelectedValue = "Yes"
+            ElseIf WorkingData.ApplicationRequestRow.StillAtLastSchool = False Then
+                fldStillAtSchool.SelectedValue = "No"
+            End If
+
+            If WorkingData.ApplicationRequestRow.StudyElsewhere = True Then
                 fldEnrolledAtAnotherProvider.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.StudyElsewhere = False Then
+            ElseIf WorkingData.ApplicationRequestRow.StudyElsewhere = False Then
                 fldEnrolledAtAnotherProvider.SelectedValue = "No"
             End If
         End If
@@ -176,8 +187,31 @@ Partial Class quals_on_entry
             End If
         Next
 
+        'School
+        If Not IsNothing(fldSchoolID) And IsUnder19 = True Then
+            If String.IsNullOrEmpty(Convert.ToString(fldSchoolID.Value)) Then
+                fldSchoolIDValidator.ErrorMessage = "Please provide the name of your last school"
+                fldSchoolIDValidator.IsValid = False
+                fldSchoolIDValidator.CssClass = "error alert alert-danger"
+                fldSchoolID.CssClass = "ErrorInput"
+            ElseIf Convert.ToString(fldSchoolID.Value) = "13829" And String.IsNullOrEmpty(Convert.ToString(fldSchoolIDOther.Value)) Then
+                fldSchoolIDOtherValidator.ErrorMessage = "Please provide the name of your other school"
+                fldSchoolIDOtherValidator.IsValid = False
+                fldSchoolIDOtherValidator.CssClass = "error alert alert-danger"
+                fldSchoolIDOther.CssClass = "ErrorInput"
+            End If
+        End If
+
+        If fldStillAtSchool.SelectedValue = "" And IsUnder19 = True Then
+            fldStillAtSchoolValidator.ErrorMessage = "Please confirm if you are still at your last school"
+            fldStillAtSchoolValidator.IsValid = False
+            fldStillAtSchoolValidator.CssClass = "error alert alert-danger"
+            'fldStillAtSchool.CssClass = "ErrorInput"
+            fldStillAtSchool.Style.Add("border", "1px solid red")
+        End If
+
         If fldEnrolledAtAnotherProvider.SelectedValue = "" Then
-            fldEnrolledAtAnotherProviderValidator.ErrorMessage = "Please confirm if you will be studying elsewhere during the time you study at Askham Bryan College"
+            fldEnrolledAtAnotherProviderValidator.ErrorMessage = "Please confirm if you will be studying elsewhere during the time you study at Orbital South Colleges"
             fldEnrolledAtAnotherProviderValidator.IsValid = False
             fldEnrolledAtAnotherProviderValidator.CssClass = "error alert alert-danger"
             'fldEnrolledAtAnotherProvider.CssClass = "ErrorInput"
@@ -268,7 +302,7 @@ Partial Class quals_on_entry
                 dateAwarded.StudentQualsOnEntryRowNumber = i
                 'dateAwarded.LabelWidth = 0
                 dateAwarded.CustomFieldType = CCCFieldType.Date
-                dateAwarded.HTML5InputType = HTML5InputType.date
+                dateAwarded.HTML5InputType = Html5InputType.date
                 'dateAwardedCell.Controls.Add(dateAwarded)
 
                 Dim removeQOEButton As New Button
@@ -377,10 +411,16 @@ Partial Class quals_on_entry
         If Me.Page.IsValid Then
 
             'Capture Yes/No fields
+            If fldStillAtSchool.SelectedValue = "Yes" Then
+                WorkingData.ApplicationRequestRow.StillAtLastSchool = True
+            ElseIf fldStillAtSchool.SelectedValue = "No" Then
+                WorkingData.ApplicationRequestRow.StillAtLastSchool = False
+            End If
+
             If fldEnrolledAtAnotherProvider.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.StudyElsewhere = True
+                WorkingData.ApplicationRequestRow.StudyElsewhere = True
             ElseIf fldEnrolledAtAnotherProvider.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.StudyElsewhere = False
+                WorkingData.ApplicationRequestRow.StudyElsewhere = False
             End If
 
             redirectString = GetResourceValue("apply_data_protection")
@@ -413,9 +453,9 @@ Partial Class quals_on_entry
         Dim dateOfBirthDate As Date?
         ReferenceDate = CDate(referenceDataString)
 
-        If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
-                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
+        If Not IsNothing(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value), Date)
             End If
 
             Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)

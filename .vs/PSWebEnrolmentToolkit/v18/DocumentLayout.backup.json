@@ -3,60 +3,136 @@
   "WorkspaceRootPath": "W:\\PSWebEnrolment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\courseenrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\courseenrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\photo.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\photo.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\courseapply.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\employment.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\employment.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\attachments.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\attachments.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\data_protection.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\data_protection.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\attachments.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\attachments.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\personal_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\personal_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\personal_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\personal_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\courseapply.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\courseapply.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\courseenrol.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\courseenrol.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\content\\robindigital.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:content\\robindigital.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\quals_on_entry.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\quals_on_entry.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\personal_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\personal_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\photo.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\photo.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\further_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\personal_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\personal_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\further_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\next_of_kin.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\next_of_kin.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\further_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\further_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\employment.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\employment.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\data_protection.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\data_protection.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\courseenrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\courseenrol.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\quals_on_entry.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
       "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\quals_on_entry.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\next_of_kin.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
       "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\next_of_kin.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\further_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\further_details.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\data_protection.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
       "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\data_protection.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\courseapply.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\courseapply.ascx||{F390D63C-F7D8-4E74-AA04-57C1ECF53D4D}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\content\\osc.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:content\\osc.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\content\\robindigital.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:content\\robindigital.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\content\\callout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:content\\callout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\further_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\further_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\further_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\further_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\quals_on_entry.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\quals_on_entry.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\quals_on_entry.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\quals_on_entry.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\data_protection.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\next_of_kin.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\next_of_kin.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\next_of_kin.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\next_of_kin.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\courseapply.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\enrol\\personal_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\enrol\\personal_details.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|w:\\pswebenrolment\\additional\\apply\\data_protection.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6C3968D-6386-421D-B77A-1016BF682E87}|W:\\PSWebEnrolment|solutionrelative:additional\\apply\\data_protection.ascx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,149 +142,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "courseenrol.ascx.vb",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx.vb",
-              "RelativeDocumentMoniker": "additional\\enrol\\courseenrol.ascx.vb",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx.vb",
-              "RelativeToolTip": "additional\\enrol\\courseenrol.ascx.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-11-22T13:34:04.595Z",
+              "DocumentIndex": 15,
+              "Title": "data_protection.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\data_protection.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\data_protection.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\data_protection.ascx",
+              "RelativeToolTip": "additional\\enrol\\data_protection.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:08:37.76Z",
               "EditorCaption": "",
               "OwnerCaption": "%2"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "courseenrol.ascx",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx",
-              "RelativeDocumentMoniker": "additional\\enrol\\courseenrol.ascx",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx",
-              "RelativeToolTip": "additional\\enrol\\courseenrol.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-22T13:33:34.455Z",
-              "EditorCaption": "",
-              "OwnerCaption": "%2"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RobinDigital.css",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\content\\RobinDigital.css",
-              "RelativeDocumentMoniker": "content\\RobinDigital.css",
-              "ToolTip": "W:\\PSWebEnrolment\\content\\RobinDigital.css",
-              "RelativeToolTip": "content\\RobinDigital.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-11-11T00:52:09.399Z",
-              "EditorCaption": "",
-              "OwnerCaption": "%2"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "data_protection.ascx.vb",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx.vb",
-              "RelativeDocumentMoniker": "additional\\apply\\data_protection.ascx.vb",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx.vb",
-              "RelativeToolTip": "additional\\apply\\data_protection.ascx.vb",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFIAAABeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-11-08T22:34:16.546Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "quals_on_entry.ascx.vb",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx.vb",
-              "RelativeDocumentMoniker": "additional\\apply\\quals_on_entry.ascx.vb",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx.vb",
-              "RelativeToolTip": "additional\\apply\\quals_on_entry.ascx.vb",
-              "ViewState": "AgIAAHgBAAAAAAAAAAApwI4BAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-11-08T22:31:09.888Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "further_details.ascx.vb",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx.vb",
-              "RelativeDocumentMoniker": "additional\\apply\\further_details.ascx.vb",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx.vb",
-              "RelativeToolTip": "additional\\apply\\further_details.ascx.vb",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAACkAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-11-08T22:30:51.815Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "next_of_kin.ascx.vb",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx.vb",
-              "RelativeDocumentMoniker": "additional\\apply\\next_of_kin.ascx.vb",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx.vb",
-              "RelativeToolTip": "additional\\apply\\next_of_kin.ascx.vb",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-11-08T22:30:05.374Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "courseapply.ascx.vb",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx.vb",
-              "RelativeDocumentMoniker": "additional\\apply\\courseapply.ascx.vb",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx.vb",
-              "RelativeToolTip": "additional\\apply\\courseapply.ascx.vb",
-              "ViewState": "AgIAAIcAAAAAAAAAAAApwJkAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-11-08T22:20:22.478Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "quals_on_entry.ascx",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx",
-              "RelativeDocumentMoniker": "additional\\apply\\quals_on_entry.ascx",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx",
-              "RelativeToolTip": "additional\\apply\\quals_on_entry.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-08T22:19:55.088Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "next_of_kin.ascx",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx",
-              "RelativeDocumentMoniker": "additional\\apply\\next_of_kin.ascx",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx",
-              "RelativeToolTip": "additional\\apply\\next_of_kin.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-08T22:19:15.165Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "further_details.ascx",
-              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx",
-              "RelativeDocumentMoniker": "additional\\apply\\further_details.ascx",
-              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx",
-              "RelativeToolTip": "additional\\apply\\further_details.ascx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-08T22:18:54.375Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 20,
               "Title": "data_protection.ascx",
               "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx",
               "RelativeDocumentMoniker": "additional\\apply\\data_protection.ascx",
@@ -216,11 +168,13 @@
               "RelativeToolTip": "additional\\apply\\data_protection.ascx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-08T22:18:02.678Z"
+              "WhenOpened": "2026-11-22T15:07:49.931Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 21,
               "Title": "courseapply.ascx",
               "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx",
               "RelativeDocumentMoniker": "additional\\apply\\courseapply.ascx",
@@ -228,13 +182,349 @@
               "RelativeToolTip": "additional\\apply\\courseapply.ascx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-08T22:15:59.112Z",
+              "WhenOpened": "2026-11-22T16:04:26.9Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "courseapply.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\apply\\courseapply.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\courseapply.ascx.vb",
+              "RelativeToolTip": "additional\\apply\\courseapply.ascx.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T16:04:27.236Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "OSC.css",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\content\\OSC.css",
+              "RelativeDocumentMoniker": "content\\OSC.css",
+              "ToolTip": "W:\\PSWebEnrolment\\content\\OSC.css",
+              "RelativeToolTip": "content\\OSC.css",
+              "ViewState": "AgIAADQAAAAAAAAAAAAUwFEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-11-22T15:37:51.781Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "callout.css",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\content\\callout.css",
+              "RelativeDocumentMoniker": "content\\callout.css",
+              "ToolTip": "W:\\PSWebEnrolment\\content\\callout.css",
+              "RelativeToolTip": "content\\callout.css",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-11-22T15:37:18.98Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RobinDigital.css",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\content\\RobinDigital.css",
+              "RelativeDocumentMoniker": "content\\RobinDigital.css",
+              "ToolTip": "W:\\PSWebEnrolment\\content\\RobinDigital.css",
+              "RelativeToolTip": "content\\RobinDigital.css",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAUwGgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-11-22T15:31:33.131Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "next_of_kin.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx",
+              "RelativeDocumentMoniker": "additional\\apply\\next_of_kin.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx",
+              "RelativeToolTip": "additional\\apply\\next_of_kin.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:08:01.325Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "quals_on_entry.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx",
+              "RelativeDocumentMoniker": "additional\\apply\\quals_on_entry.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx",
+              "RelativeToolTip": "additional\\apply\\quals_on_entry.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:08:18.097Z",
               "EditorCaption": "",
               "OwnerCaption": "%2"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "attachments.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\attachments.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\attachments.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\attachments.ascx",
+              "RelativeToolTip": "additional\\enrol\\attachments.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:08:27.415Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "courseenrol.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\courseenrol.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx",
+              "RelativeToolTip": "additional\\enrol\\courseenrol.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:08:36.037Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "employment.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\employment.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\employment.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\employment.ascx",
+              "RelativeToolTip": "additional\\enrol\\employment.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:08:45.612Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "next_of_kin.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\next_of_kin.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\next_of_kin.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\next_of_kin.ascx",
+              "RelativeToolTip": "additional\\enrol\\next_of_kin.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:09:02.952Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "personal_details.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\personal_details.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\personal_details.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\personal_details.ascx",
+              "RelativeToolTip": "additional\\enrol\\personal_details.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:09:11.318Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "photo.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\photo.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\photo.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\photo.ascx",
+              "RelativeToolTip": "additional\\enrol\\photo.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:09:19.055Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "quals_on_entry.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\quals_on_entry.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\quals_on_entry.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\quals_on_entry.ascx",
+              "RelativeToolTip": "additional\\enrol\\quals_on_entry.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T15:09:26.972Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "quals_on_entry.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\quals_on_entry.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\quals_on_entry.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\quals_on_entry.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\quals_on_entry.ascx.vb",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAcwBQBAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:09:27.704Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "photo.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\photo.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\photo.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\photo.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\photo.ascx.vb",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAgwAgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:09:19.378Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "personal_details.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\personal_details.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\personal_details.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\personal_details.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\personal_details.ascx.vb",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAywO4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:09:12.04Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "next_of_kin.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\next_of_kin.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\next_of_kin.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\next_of_kin.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\next_of_kin.ascx.vb",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAwwKAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:09:03.249Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "employment.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\employment.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\employment.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\employment.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\employment.ascx.vb",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAgwFoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:08:46.098Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "data_protection.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\data_protection.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\data_protection.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\data_protection.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\data_protection.ascx.vb",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAAFUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:08:38.007Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "courseenrol.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\courseenrol.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\courseenrol.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\courseenrol.ascx.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:08:36.58Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "attachments.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\attachments.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\attachments.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\attachments.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\attachments.ascx.vb",
+              "ViewState": "AgIAAKwBAAAAAAAAAAAAAF0BAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:08:28.415Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "quals_on_entry.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\apply\\quals_on_entry.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\quals_on_entry.ascx.vb",
+              "RelativeToolTip": "additional\\apply\\quals_on_entry.ascx.vb",
+              "ViewState": "AgIAABABAAAAAAAAAAAAABQBAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:08:18.428Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "next_of_kin.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\apply\\next_of_kin.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\next_of_kin.ascx.vb",
+              "RelativeToolTip": "additional\\apply\\next_of_kin.ascx.vb",
+              "ViewState": "AgIAAAEBAAAAAAAAAAAIwJ8AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:08:01.586Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "data_protection.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\apply\\data_protection.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\data_protection.ascx.vb",
+              "RelativeToolTip": "additional\\apply\\data_protection.ascx.vb",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAywJsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T15:07:50.397Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "personal_details.ascx",
               "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\personal_details.ascx",
               "RelativeDocumentMoniker": "additional\\apply\\personal_details.ascx",
@@ -242,7 +532,79 @@
               "RelativeToolTip": "additional\\apply\\personal_details.ascx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
-              "WhenOpened": "2026-11-08T22:13:23.39Z"
+              "WhenOpened": "2026-11-22T14:42:36.372Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "further_details.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx",
+              "RelativeDocumentMoniker": "additional\\apply\\further_details.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx",
+              "RelativeToolTip": "additional\\apply\\further_details.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T14:42:50.679Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "further_details.ascx",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\further_details.ascx",
+              "RelativeDocumentMoniker": "additional\\enrol\\further_details.ascx",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\further_details.ascx",
+              "RelativeToolTip": "additional\\enrol\\further_details.ascx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003302|",
+              "WhenOpened": "2026-11-22T14:46:38.582Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "further_details.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\enrol\\further_details.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\enrol\\further_details.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\enrol\\further_details.ascx.vb",
+              "RelativeToolTip": "additional\\enrol\\further_details.ascx.vb",
+              "ViewState": "AgIAALABAAAAAAAAAAAAAL4BAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T14:46:38.921Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "further_details.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\apply\\further_details.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\further_details.ascx.vb",
+              "RelativeToolTip": "additional\\apply\\further_details.ascx.vb",
+              "ViewState": "AgIAAKoBAAAAAAAAAAAAALcBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T14:42:51.261Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "personal_details.ascx.vb",
+              "DocumentMoniker": "W:\\PSWebEnrolment\\additional\\apply\\personal_details.ascx.vb",
+              "RelativeDocumentMoniker": "additional\\apply\\personal_details.ascx.vb",
+              "ToolTip": "W:\\PSWebEnrolment\\additional\\apply\\personal_details.ascx.vb",
+              "RelativeToolTip": "additional\\apply\\personal_details.ascx.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-11-22T14:42:45.153Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
             }
           ]
         }

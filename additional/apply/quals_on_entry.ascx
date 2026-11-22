@@ -212,15 +212,13 @@ QCF Certificate at Level 3 which is 30 to 36 credits</td>
     <p>Please confirm if you have achieved your GCSE English (Language/Literature) and GCSE Mathematics grade 9-4 by the end of Year 11.</p>
 
   <div class="row">
-             <div class="sm:col-12 columns form-group"> 
+             <div class="sm:col-6 columns form-group"> 
            <cc1:StudentEnrolmentField id="StudentEnrolmentField2" runat="server" customcaption="Yes, I have achieved GCSE English grade 9-4 by Year 11"  labelwidth="300" StudentEnrolmentFieldType="AchievedEnglishGCSEByEndOfYear11"></cc1:StudentEnrolmentField>
           </div>
-   </div>
 
 <%--    <p>Do you have functional skills L2 in Maths or an alternative Maths qualification:</p>--%>
 
-  <div class="row">
-             <div class="sm:col-12 columns form-group"> 
+             <div class="sm:col-6 columns form-group"> 
            <cc1:StudentEnrolmentField id="StudentEnrolmentField1" runat="server" customcaption="Yes, I have achieved GCSE Maths grade 9-4 by Year 11" labelwidth="300" StudentEnrolmentFieldType="AchievedMathsGCSEByEndOfYear11"></cc1:StudentEnrolmentField>
           </div>
    </div>
@@ -233,24 +231,36 @@ QCF Certificate at Level 3 which is 30 to 36 credits</td>
     <h4><i class="fa-solid fa-school"></i> Education Details</h4>
 
     <% If IsUnder18 = True Then %>
-   <div class="row">
-       <div class="sm:col-6 columns form-group"> 
-            <cc1:StudentEnrolmentField StudentEnrolmentFieldType="StudentDetailUserDefined12" ID="txtSchoolAT16" runat="server" IsRequired="false" LabelWidth="300" CustomCaption="Name of school attended at age 16" />
-           </div>
-   
-
-   <div class="row">
-       <div class="sm:col-6 columns form-group"> 
-            <cc1:StudentEnrolmentField StudentEnrolmentFieldType="StudentDetailUserDefined13" ID="txtSchoolTownCity" runat="server" IsRequired="false" LabelWidth="300" CustomCaption="School Town/City" />
-           </div>
+    <div class="row">
+        <div class="sm:col-12 columns form-group"> 
+            <cc1:StudentEnrolmentField StudentEnrolmentFieldType="SchoolID" ID="fldSchoolID" ClientIDMode="Static" runat="server" IsRequired="true" LabelWidth="300" CustomCaption="Name of school you last attended" />
+            <asp:CustomValidator ID="fldSchoolIDValidator" runat="server"></asp:CustomValidator>
         </div>
     </div>
 
-<%--      <div class="row">
+    <div id="SchoolOther" class="row d-none">
+        <div class="sm:col-6 columns form-group"> 
+        <cc1:StudentEnrolmentField StudentEnrolmentFieldType="StudentDetailUserDefined12" ID="fldSchoolIDOther" runat="server" IsRequired="false" LabelWidth="300" CustomCaption="Name of Other School" />
+            <asp:CustomValidator ID="fldSchoolIDOtherValidator" runat="server"></asp:CustomValidator>
+        </div>
+
+        <div class="row">
+            <div class="sm:col-6 columns form-group"> 
+                <cc1:StudentEnrolmentField StudentEnrolmentFieldType="StudentDetailUserDefined13" ID="txtSchoolTownCity" runat="server" IsRequired="false" LabelWidth="300" CustomCaption="School Town/City" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="sm:col-12 columns form-group"> 
-            <cc1:StudentEnrolmentField StudentEnrolmentFieldType="StillAtLastSchool" ID="fldStillAtSchool" runat="server" Visible="true" LabelWidth="400" IsRequired="false"  CustomCaption="Tick, if you are still at school?"/>
-          </div>
-   </div>--%>
+            <span class="textfieldlabelrequired">Are you still at school?</span>
+            <asp:RadioButtonList runat="server" ID="fldStillAtSchool" CssClass="form-input TableInline">
+	            <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+	            <asp:ListItem Text="No" Value="No"></asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:CustomValidator ID="fldStillAtSchoolValidator" runat="server"></asp:CustomValidator>
+        </div>
+    </div>
     <% End If %>
 
     <div class="row">
@@ -449,5 +459,31 @@ QCF Certificate at Level 3 which is 30 to 36 credits</td>
                 btnNoQualifications.click();
             }
         });
+
+        //Show Other School fields if OTHER selected from School drop-down
+        showHideOtherSchool(); //Ensure other fields are shown on page load if OTHER already selected
+        let cboSchoolID = document.getElementById(`cboSchoolID`);
+        let fldPriorAttainmentLevelIDInputBox = addSearchableDropDown(cboSchoolID);
+        let otherSchoolRow = document.getElementById(`SchoolOther`);
+
+        if (cboSchoolID) {
+            cboSchoolID.addEventListener(`change`, function (event) {
+                showHideOtherSchool();
+            });
+        }
     });
+
+    function showHideOtherSchool() { 
+        let cboSchoolID = document.getElementById(`cboSchoolID`);
+        let otherSchoolRow = document.getElementById(`SchoolOther`);
+
+        let selectText = cboSchoolID.options[cboSchoolID.selectedIndex].text;
+
+        if (selectText.indexOf("OTHER") >= 0) {
+            otherSchoolRow.classList.remove(`d-none`);
+        }
+        else {
+            otherSchoolRow.classList.add(`d-none`);
+        }
+    }
 </script>

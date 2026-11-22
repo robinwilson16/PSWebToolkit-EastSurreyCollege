@@ -80,3 +80,9 @@ a.theme-danger {
         accent-color: #92c947;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    table.TableNotInline tr td input {
+        accent-color: #92c947;
+    }
+}

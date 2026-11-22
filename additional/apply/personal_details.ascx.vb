@@ -39,12 +39,12 @@ Partial Class personal_details
             End If
         End If
 
-        If IsDate(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined1 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth.GetValueOrDefault, Date), ReferenceDate) / 365.25).ToString()
+        If IsDate(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+            WorkingData.ApplicationRequestRow.StudentDetailUserDefined1 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.ApplicationRequestRow.DateOfBirth.GetValueOrDefault, Date), ReferenceDate) / 365.25).ToString()
         End If
 
-        If IsDate(WorkingData.EnrolmentRequestRow.DateOfBirth) And IsDate(OfferingDataTable.FetchByOfferingID(OfferingID).StartDate) Then
-            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined2 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth.GetValueOrDefault, Date), OfferingDataTable.FetchByOfferingID(OfferingID).StartDate.GetValueOrDefault) / 365.25).ToString()
+        If IsDate(WorkingData.ApplicationRequestRow.DateOfBirth) And IsDate(OfferingDataTable.FetchByOfferingID(OfferingID).StartDate) Then
+            WorkingData.ApplicationRequestRow.StudentDetailUserDefined2 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.ApplicationRequestRow.DateOfBirth.GetValueOrDefault, Date), OfferingDataTable.FetchByOfferingID(OfferingID).StartDate.GetValueOrDefault) / 365.25).ToString()
         End If
 
 
@@ -56,62 +56,62 @@ Partial Class personal_details
             End If
 
         Else
-            postcode.Value = WorkingData.EnrolmentRequestRow.PostcodeOut + WorkingData.EnrolmentRequestRow.PostcodeIn
-            AltPostcode.Value = WorkingData.EnrolmentRequestRow.AltPostcodeOut + WorkingData.EnrolmentRequestRow.AltPostcodeIn
+            postcode.Value = WorkingData.ApplicationRequestRow.PostcodeOut + WorkingData.ApplicationRequestRow.PostcodeIn
+            AltPostcode.Value = WorkingData.ApplicationRequestRow.AltPostcodeOut + WorkingData.ApplicationRequestRow.AltPostcodeIn
         End If
 
         If Not IsPostBack Then
 
             'Booleans default to false when not set
-            If WorkingData.EnrolmentRequestRow.FirstForename = "" Then
-                WorkingData.EnrolmentRequestRow.YoungParent = Nothing
-                WorkingData.EnrolmentRequestRow.EMAConfirmed = Nothing
+            If WorkingData.ApplicationRequestRow.FirstForename = "" Then
+                WorkingData.ApplicationRequestRow.YoungParent = Nothing
+                WorkingData.ApplicationRequestRow.EMAConfirmed = Nothing
             End If
 
-            If WorkingData.EnrolmentRequestRow.EMAConfirmed = True Then
+            If WorkingData.ApplicationRequestRow.EMAConfirmed = True Then
                 fldKnownToYouthJustice.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.EMAConfirmed = False Then
+            ElseIf WorkingData.ApplicationRequestRow.EMAConfirmed = False Then
                 fldKnownToYouthJustice.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.StudentDetailUserDefined50 = "True" Then
+            If WorkingData.ApplicationRequestRow.StudentDetailUserDefined50 = "True" Then
                 fldParentCarerInPrison.SelectedValue = "Yes"
-            ElseIf WorkingData.EnrolmentRequestRow.StudentDetailUserDefined50 = "False" Then
+            ElseIf WorkingData.ApplicationRequestRow.StudentDetailUserDefined50 = "False" Then
                 fldParentCarerInPrison.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.AccommodationTypeID = "11" Then
+            If WorkingData.ApplicationRequestRow.AccommodationTypeID = "11" Then
                 ddCollegeAccomodation.SelectedValue = "1"
-            ElseIf WorkingData.EnrolmentRequestRow.AccommodationTypeID > "0" Then
+            ElseIf WorkingData.ApplicationRequestRow.AccommodationTypeID > "0" Then
                 ddCollegeAccomodation.SelectedValue = "0"
             Else
                 ddCollegeAccomodation.SelectedValue = Nothing
             End If
 
             'Booleans default to false when not set
-            If IsNothing(WorkingData.EnrolmentRequestRow.FirstForename) Then
-                WorkingData.EnrolmentRequestRow.StudyElsewhere = Nothing
+            If IsNothing(WorkingData.ApplicationRequestRow.FirstForename) Then
+                WorkingData.ApplicationRequestRow.StudyElsewhere = Nothing
             End If
 
         End If
 
-        'WorkingData.EnrolmentRequestRow.Title = "Mr"
-        'WorkingData.EnrolmentRequestRow.Surname = "test"
+        'WorkingData.ApplicationRequestRow.Title = "Mr"
+        'WorkingData.ApplicationRequestRow.Surname = "test"
         'WorkingData.ApplicationRequestRow.ApplicationTypeID = "1"
         'WorkingData.ApplicationRequestRow.ApplicationUserDefined2 = "York"
         'WorkingData.ApplicationRequestRow.ApplicationUserDefined3 = "Hort"
-        'WorkingData.EnrolmentRequestRow.PriorAttainmentLevelID = "01"
-        'WorkingData.EnrolmentRequestRow.FirstForename = "Test"
-        'WorkingData.EnrolmentRequestRow.DateOfBirth = "30/08/2002"
-        'WorkingData.EnrolmentRequestRow.Sex = "F"
-        'WorkingData.EnrolmentRequestRow.Address1 = "317"
-        'WorkingData.EnrolmentRequestRow.Address2 = "Test Road"
-        'WorkingData.EnrolmentRequestRow.Address3 = "Test Road"
-        'WorkingData.EnrolmentRequestRow.Address4 = "Test Road"
-        'WorkingData.EnrolmentRequestRow.PostcodeOut = "B74"
-        'WorkingData.EnrolmentRequestRow.PostcodeIn = "4BZ"
-        'WorkingData.EnrolmentRequestRow.Email = "a@a.com"
-        'WorkingData.EnrolmentRequestRow.MobileTel = "07853318366"
+        'WorkingData.ApplicationRequestRow.PriorAttainmentLevelID = "01"
+        'WorkingData.ApplicationRequestRow.FirstForename = "Test"
+        'WorkingData.ApplicationRequestRow.DateOfBirth = "30/08/2002"
+        'WorkingData.ApplicationRequestRow.Sex = "F"
+        'WorkingData.ApplicationRequestRow.Address1 = "317"
+        'WorkingData.ApplicationRequestRow.Address2 = "Test Road"
+        'WorkingData.ApplicationRequestRow.Address3 = "Test Road"
+        'WorkingData.ApplicationRequestRow.Address4 = "Test Road"
+        'WorkingData.ApplicationRequestRow.PostcodeOut = "B74"
+        'WorkingData.ApplicationRequestRow.PostcodeIn = "4BZ"
+        'WorkingData.ApplicationRequestRow.Email = "a@a.com"
+        'WorkingData.ApplicationRequestRow.MobileTel = "07853318366"
         'Response.Write(SQLDBDataReader.GetString(7))
 
         'If Not WorkingData.CurrentLoggedOnUserRow Is Nothing Then
@@ -144,37 +144,37 @@ Partial Class personal_details
         '            While (SQLDBDataReader.Read)
         '                If Not IsDBNull(SQLDBDataReader("refno")) Then
         '                    Session("refno") = CStr(SQLDBDataReader("refno"))
-        '                    WorkingData.EnrolmentRequestRow.RefNo = CStr(SQLDBDataReader("refno"))
+        '                    WorkingData.ApplicationRequestRow.RefNo = CStr(SQLDBDataReader("refno"))
         '                End If
         '                If Not IsDBNull(SQLDBDataReader("surname")) Then
-        '                    WorkingData.EnrolmentRequestRow.Surname = CStr(SQLDBDataReader("surname"))
+        '                    WorkingData.ApplicationRequestRow.Surname = CStr(SQLDBDataReader("surname"))
         '                    Session("snamereadonly") = "Y"
         '                End If
         '                If Not IsDBNull(SQLDBDataReader("firstforename")) Then
-        '                    WorkingData.EnrolmentRequestRow.FirstForename = CStr(SQLDBDataReader("firstforename"))
+        '                    WorkingData.ApplicationRequestRow.FirstForename = CStr(SQLDBDataReader("firstforename"))
         '                    Session("fnamereadonly") = "Y"
         '                End If
         '                If Not IsDBNull(SQLDBDataReader("dateofbirth")) Then
         '                    If IsDate(SQLDBDataReader("dateofbirth")) Then
-        '                        WorkingData.EnrolmentRequestRow.DateOfBirth = CDate(SQLDBDataReader("dateofbirth"))
+        '                        WorkingData.ApplicationRequestRow.DateOfBirth = CDate(SQLDBDataReader("dateofbirth"))
         '                        Session("dobreadonly") = "Y"
         '                    End If
         '                End If
 
-        '                If Not IsDBNull(SQLDBDataReader("sex")) Then WorkingData.EnrolmentRequestRow.Sex = CStr(SQLDBDataReader("sex"))
-        '                If Not IsDBNull(SQLDBDataReader("schoolid")) Then WorkingData.EnrolmentRequestRow.SchoolID = CInt(SQLDBDataReader("schoolid"))
+        '                If Not IsDBNull(SQLDBDataReader("sex")) Then WorkingData.ApplicationRequestRow.Sex = CStr(SQLDBDataReader("sex"))
+        '                If Not IsDBNull(SQLDBDataReader("schoolid")) Then WorkingData.ApplicationRequestRow.SchoolID = CInt(SQLDBDataReader("schoolid"))
         '                If Not IsDBNull(SQLDBDataReader("address1")) Then
-        '                    WorkingData.EnrolmentRequestRow.Address1 = CStr(SQLDBDataReader("address1"))
+        '                    WorkingData.ApplicationRequestRow.Address1 = CStr(SQLDBDataReader("address1"))
         '                    divAddresslines.Visible = True
         '                End If
-        '                If Not IsDBNull(SQLDBDataReader("address2")) Then WorkingData.EnrolmentRequestRow.Address2 = CStr(SQLDBDataReader("address2"))
-        '                If Not IsDBNull(SQLDBDataReader("address3")) Then WorkingData.EnrolmentRequestRow.Address3 = CStr(SQLDBDataReader("address3"))
-        '                If Not IsDBNull(SQLDBDataReader("address4")) Then WorkingData.EnrolmentRequestRow.Address4 = CStr(SQLDBDataReader("address4"))
-        '                If Not IsDBNull(SQLDBDataReader("postcodeout")) Then WorkingData.EnrolmentRequestRow.PostcodeOut = CStr(SQLDBDataReader("postcodein"))
-        '                If Not IsDBNull(SQLDBDataReader("postcodein")) Then WorkingData.EnrolmentRequestRow.PostcodeIn = CStr(SQLDBDataReader("postcodeout"))
-        '                If Not IsDBNull(SQLDBDataReader("postcodeout")) And Not IsDBNull(SQLDBDataReader("postcodein")) Then postcode.Value = WorkingData.EnrolmentRequestRow.PostcodeOut + " " + WorkingData.EnrolmentRequestRow.PostcodeIn
-        '                If Not IsDBNull(SQLDBDataReader("email")) Then WorkingData.EnrolmentRequestRow.Email = CStr(SQLDBDataReader("email"))
-        '                If Not IsDBNull(SQLDBDataReader("mobiletel")) Then WorkingData.EnrolmentRequestRow.MobileTel = CStr(SQLDBDataReader("mobiletel"))
+        '                If Not IsDBNull(SQLDBDataReader("address2")) Then WorkingData.ApplicationRequestRow.Address2 = CStr(SQLDBDataReader("address2"))
+        '                If Not IsDBNull(SQLDBDataReader("address3")) Then WorkingData.ApplicationRequestRow.Address3 = CStr(SQLDBDataReader("address3"))
+        '                If Not IsDBNull(SQLDBDataReader("address4")) Then WorkingData.ApplicationRequestRow.Address4 = CStr(SQLDBDataReader("address4"))
+        '                If Not IsDBNull(SQLDBDataReader("postcodeout")) Then WorkingData.ApplicationRequestRow.PostcodeOut = CStr(SQLDBDataReader("postcodein"))
+        '                If Not IsDBNull(SQLDBDataReader("postcodein")) Then WorkingData.ApplicationRequestRow.PostcodeIn = CStr(SQLDBDataReader("postcodeout"))
+        '                If Not IsDBNull(SQLDBDataReader("postcodeout")) And Not IsDBNull(SQLDBDataReader("postcodein")) Then postcode.Value = WorkingData.ApplicationRequestRow.PostcodeOut + " " + WorkingData.ApplicationRequestRow.PostcodeIn
+        '                If Not IsDBNull(SQLDBDataReader("email")) Then WorkingData.ApplicationRequestRow.Email = CStr(SQLDBDataReader("email"))
+        '                If Not IsDBNull(SQLDBDataReader("mobiletel")) Then WorkingData.ApplicationRequestRow.MobileTel = CStr(SQLDBDataReader("mobiletel"))
         '                'Response.Write(SQLDBDataReader.GetString(7))
         '                'Response.Write(SQLDBDataReader.GetString(5))
         '            End While
@@ -204,9 +204,9 @@ Partial Class personal_details
         Dim dateOfBirthDate As Date?
         ReferenceDate = CDate(referenceDataString)
 
-        If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
-                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
+        If Not IsNothing(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value), Date)
             End If
 
             Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
@@ -465,12 +465,12 @@ Partial Class personal_details
         'Dim startDate As Date = "02/09/2023"
         'Dim refDate As Date = "31/08/2023"
 
-        'If IsDate(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-        '    ' Session("age") = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth, Date), refDate) / 365.25)
-        '    WorkingData.EnrolmentRequestRow.StudentDetailUserDefined1 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth, Date), refDate) / 365.25)
+        'If IsDate(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+        '    ' Session("age") = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.ApplicationRequestRow.DateOfBirth, Date), refDate) / 365.25)
+        '    WorkingData.ApplicationRequestRow.StudentDetailUserDefined1 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.ApplicationRequestRow.DateOfBirth, Date), refDate) / 365.25)
         '    If IsDate(startDate) Then
-        '        'Session("agecourse") = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth, Date), startDate) / 365.25)
-        '        WorkingData.EnrolmentRequestRow.StudentDetailUserDefined2 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth, Date), startDate) / 365.25)
+        '        'Session("agecourse") = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.ApplicationRequestRow.DateOfBirth, Date), startDate) / 365.25)
+        '        WorkingData.ApplicationRequestRow.StudentDetailUserDefined2 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.ApplicationRequestRow.DateOfBirth, Date), startDate) / 365.25)
         '    End If
         'End If
 
@@ -550,7 +550,7 @@ Partial Class personal_details
     End Sub
 
     Private Sub btnContinue_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnContinue.Click
-        ' Response.Write(WorkingData.EnrolmentRequestRow.StudentDetailUserDefined1)
+        ' Response.Write(WorkingData.ApplicationRequestRow.StudentDetailUserDefined1)
 
         'Store custom field values in session
         Session("RadioButtonListAlt") = RadioButtonListAlt.SelectedValue.ToString
@@ -559,14 +559,14 @@ Partial Class personal_details
         Me.Page.Validate()
 
         If Me.Page.IsValid Then
-            WorkingData.EnrolmentRequestRow.FirstForename = Trim(fldFirstForename.Value.ToString)
-            WorkingData.EnrolmentRequestRow.OtherForenames = Trim(fldOtherForenames.Value.ToString)
-            WorkingData.EnrolmentRequestRow.Surname = Trim(fldSurname.Value.ToString)
-            WorkingData.EnrolmentRequestRow.KnownAs = Trim(fldKnownAs.Value.ToString)
-            WorkingData.EnrolmentRequestRow.SurnameAtBirth = Trim(fldSurnameAtBirth.Value.ToString)
+            WorkingData.ApplicationRequestRow.FirstForename = Trim(fldFirstForename.Value.ToString)
+            WorkingData.ApplicationRequestRow.OtherForenames = Trim(fldOtherForenames.Value.ToString)
+            WorkingData.ApplicationRequestRow.Surname = Trim(fldSurname.Value.ToString)
+            WorkingData.ApplicationRequestRow.KnownAs = Trim(fldKnownAs.Value.ToString)
+            WorkingData.ApplicationRequestRow.SurnameAtBirth = Trim(fldSurnameAtBirth.Value.ToString)
 
             If ddCollegeAccomodation.SelectedValue = "1" Then
-                WorkingData.EnrolmentRequestRow.AccommodationTypeID = "11"
+                WorkingData.ApplicationRequestRow.AccommodationTypeID = "11"
             End If
 
             WorkingData.EnrolmentRequest(0).Address1 = Convert.ToString(fldAddress1.Value)
@@ -578,8 +578,8 @@ Partial Class personal_details
             ''CCCPS-77326: Setting flag to false so Main Address screen opens when coming from this page.
             PSWebEnrolmentProperties.IsCurrentlyTakingAltAddress = False
             If Len(postcode.Value.Trim) > 0 Then
-                WorkingData.EnrolmentRequestRow.PostcodeOut = postcode.Value.Trim.Substring(0, postcode.Value.Trim.Length - 3).Trim
-                WorkingData.EnrolmentRequestRow.PostcodeIn = Right(postcode.Value.Trim, 3).Trim
+                WorkingData.ApplicationRequestRow.PostcodeOut = postcode.Value.Trim.Substring(0, postcode.Value.Trim.Length - 3).Trim
+                WorkingData.ApplicationRequestRow.PostcodeIn = Right(postcode.Value.Trim, 3).Trim
 
                 WorkingData.ApplicationRequestRow.PostcodeOut = postcode.Value.Trim.Substring(0, postcode.Value.Trim.Length - 3).Trim
                 WorkingData.ApplicationRequestRow.PostcodeIn = Right(postcode.Value.Trim, 3).Trim
@@ -587,17 +587,17 @@ Partial Class personal_details
 
             If ddCollegeAccomodation.SelectedValue = "1" Then
                 'Clear anything entered into the alternative address fields if the student is living in college accommodation
-                WorkingData.EnrolmentRequestRow.AltAddress1 = ""
-                WorkingData.EnrolmentRequestRow.AltAddress2 = ""
-                WorkingData.EnrolmentRequestRow.AltAddress3 = ""
-                WorkingData.EnrolmentRequestRow.AltAddress4 = ""
-                WorkingData.EnrolmentRequestRow.AltPostcodeOut = ""
-                WorkingData.EnrolmentRequestRow.AltPostcodeIn = ""
-                WorkingData.EnrolmentRequestRow.AltTel1 = ""
+                WorkingData.ApplicationRequestRow.AltAddress1 = ""
+                WorkingData.ApplicationRequestRow.AltAddress2 = ""
+                WorkingData.ApplicationRequestRow.AltAddress3 = ""
+                WorkingData.ApplicationRequestRow.AltAddress4 = ""
+                WorkingData.ApplicationRequestRow.AltPostcodeOut = ""
+                WorkingData.ApplicationRequestRow.AltPostcodeIn = ""
+                WorkingData.ApplicationRequestRow.AltTel1 = ""
             Else
                 If Len(AltPostcode.Value.Trim) > 0 Then
-                    WorkingData.EnrolmentRequestRow.AltPostcodeOut = AltPostcode.Value.Trim.Substring(0, AltPostcode.Value.Trim.Length - 3).Trim
-                    WorkingData.EnrolmentRequestRow.AltPostcodeIn = Right(AltPostcode.Value.Trim, 3).Trim
+                    WorkingData.ApplicationRequestRow.AltPostcodeOut = AltPostcode.Value.Trim.Substring(0, AltPostcode.Value.Trim.Length - 3).Trim
+                    WorkingData.ApplicationRequestRow.AltPostcodeIn = Right(AltPostcode.Value.Trim, 3).Trim
 
                     WorkingData.ApplicationRequestRow.AltPostcodeOut = AltPostcode.Value.Trim.Substring(0, AltPostcode.Value.Trim.Length - 3).Trim
                     WorkingData.ApplicationRequestRow.AltPostcodeIn = Right(AltPostcode.Value.Trim, 3).Trim
@@ -606,15 +606,15 @@ Partial Class personal_details
 
             'Capture Yes/No fields
             If fldKnownToYouthJustice.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.EMAConfirmed = True
+                WorkingData.ApplicationRequestRow.EMAConfirmed = True
             ElseIf fldKnownToYouthJustice.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.EMAConfirmed = False
+                WorkingData.ApplicationRequestRow.EMAConfirmed = False
             End If
 
             If fldParentCarerInPrison.SelectedValue = "Yes" Then
-                WorkingData.EnrolmentRequestRow.StudentDetailUserDefined50 = "True"
+                WorkingData.ApplicationRequestRow.StudentDetailUserDefined50 = "True"
             ElseIf fldParentCarerInPrison.SelectedValue = "No" Then
-                WorkingData.EnrolmentRequestRow.StudentDetailUserDefined50 = "False"
+                WorkingData.ApplicationRequestRow.StudentDetailUserDefined50 = "False"
             End If
 
             Response.Redirect(GetResourceValue("apply_next_of_kin"))

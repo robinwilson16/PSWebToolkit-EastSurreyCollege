@@ -129,7 +129,7 @@
 
 <div class="row align-items-end">
     <div class="sm:col-6 columns form-group"> 
-        <cc1:StudentEnrolmentField ID="fldDateOfBirth" runat="server" IsRequired="true" StudentEnrolmentFieldType="DateOfBirth" LabelWidth="200" ClientIDMode="Static" Placeholder="dd/mm/yyyy" HTML5InputType="date" AutoPostBack="true" />
+        <cc1:StudentEnrolmentField ID="fldDateOfBirth" runat="server" IsRequired="true" StudentEnrolmentFieldType="DateOfBirth" LabelWidth="200" ClientIDMode="Static" Placeholder="dd/mm/yyyy" HTML5InputType="date" />
         <asp:CustomValidator ID="fldDateOfBirthValidator" runat="server"></asp:CustomValidator>
     </div>
     <div class="sm:col-6 columns form-group"> 
@@ -199,33 +199,29 @@
         </div>
       </div>--%>
 
-    <%If IsUnder18 = True Then %>
-        <div class="row">
-            <div class="sm:col-12 columns form-group"> 
-                <span class="textfieldlabelrequired">Are you known to the youth justice service?</span>
-                <p>Are you receiving support or involvement from the Youth Justice Service due to offending behaviour or related concerns</p>
-                <asp:RadioButtonList runat="server" ID="fldKnownToYouthJustice" CssClass="form-input TableInline">
-                    <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
-                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
-                </asp:RadioButtonList>
-                <asp:CustomValidator ID="fldKnownToYouthJusticeValidator" runat="server"></asp:CustomValidator>
-            </div>
+    <div id="KnownToYouthJusticeRow" class="row d-none">
+        <div class="sm:col-12 columns form-group"> 
+            <span class="textfieldlabelrequired">Are you known to the youth justice service?</span>
+            <p>Are you receiving support or involvement from the Youth Justice Service due to offending behaviour or related concerns</p>
+            <asp:RadioButtonList runat="server" ID="fldKnownToYouthJustice" CssClass="form-input TableInline">
+                <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                <asp:ListItem Text="No" Value="No"></asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:CustomValidator ID="fldKnownToYouthJusticeValidator" runat="server"></asp:CustomValidator>
         </div>
-        <%End If %>
+    </div>
 
-        <%If IsUnder19 = True Then %>
-        <div class="row">
-            <div class="sm:col-12 columns form-group"> 
-                <span class="textfieldlabelrequired">Do you have a parent or carer in prison?</span>
-                <p>Do you have a parent, guardian, or main carer who is currently serving a prison sentence</p>
-                <asp:RadioButtonList runat="server" ID="fldParentCarerInPrison" CssClass="form-input TableInline">
-                    <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
-                    <asp:ListItem Text="No" Value="No"></asp:ListItem>
-                </asp:RadioButtonList>
-                <asp:CustomValidator ID="fldParentCarerInPrisonValidator" runat="server"></asp:CustomValidator>
-            </div>
+    <div id="ParentCarerInPrisonRow" class="row d-none">
+        <div class="sm:col-12 columns form-group"> 
+            <span class="textfieldlabelrequired">Do you have a parent or carer in prison?</span>
+            <p>Do you have a parent, guardian, or main carer who is currently serving a prison sentence</p>
+            <asp:RadioButtonList runat="server" ID="fldParentCarerInPrison" CssClass="form-input TableInline">
+                <asp:ListItem Text="Yes" Value="Yes"></asp:ListItem>
+                <asp:ListItem Text="No" Value="No"></asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:CustomValidator ID="fldParentCarerInPrisonValidator" runat="server"></asp:CustomValidator>
         </div>
-        <%End If %>
+    </div>
 
 </div>
 
@@ -515,10 +511,14 @@
             //If DOB already has a value then attempt to show age from DOB
             //alert(`|` + dob.value + `|`);
             showAge();
+            showHideKnownToYouthJustice();
+            showHideParentCarerInPrison();
         }
         dob.addEventListener(`keyup`, function (event) {
             showAge();
             postcode.dispatchEvent(postCodeKeyup);
+            showHideKnownToYouthJustice();
+            showHideParentCarerInPrison();
         });
 
         function showAge() {
@@ -746,4 +746,34 @@
             DevolvedPostCodeAreaInfo.innerHTML = fundingMessage;
         }
     });
+
+    function showHideKnownToYouthJustice() {
+        let knownToYouthJusticeRow = document.getElementById(`KnownToYouthJusticeRow`);
+        let Age31stAug = document.getElementById(`Age31stAug`);
+
+        if (knownToYouthJusticeRow === null || Age31stAug === null) {
+            return;
+        }
+        if (Age31stAug.value < 18) {
+            knownToYouthJusticeRow.classList.remove(`d-none`);
+        }
+        else {
+            knownToYouthJusticeRow.classList.add(`d-none`);
+        }
+    }
+
+    function showHideParentCarerInPrison() {
+        let parentCarerInPrisonRow = document.getElementById(`ParentCarerInPrisonRow`);
+        let Age31stAug = document.getElementById(`Age31stAug`);
+
+        if (parentCarerInPrisonRow === null || Age31stAug === null) {
+            return;
+        }
+        if (Age31stAug.value < 19) {
+            parentCarerInPrisonRow.classList.remove(`d-none`);
+        }
+        else {
+            parentCarerInPrisonRow.classList.add(`d-none`);
+        }
+    }
 </script>

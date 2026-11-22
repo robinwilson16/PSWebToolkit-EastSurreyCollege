@@ -41,9 +41,9 @@ Partial Class next_of_kin
         If IsPostBack Then
             ' UpdateAddress()
         Else
-            postcode.Value = WorkingData.EnrolmentRequestRow.ParentPostCodeOut + WorkingData.EnrolmentRequestRow.ParentPostCodeIn
-            If WorkingData.EnrolmentRequestRow.StudentDetailUserDefined14 <> "" Then
-                ddConsent.SelectedValue = WorkingData.EnrolmentRequestRow.StudentDetailUserDefined14
+            postcode.Value = WorkingData.ApplicationRequestRow.ParentPostCodeOut + WorkingData.ApplicationRequestRow.ParentPostCodeIn
+            If WorkingData.ApplicationRequestRow.StudentDetailUserDefined14 <> "" Then
+                ddConsent.SelectedValue = WorkingData.ApplicationRequestRow.StudentDetailUserDefined14
             End If
 
         End If
@@ -85,8 +85,8 @@ Partial Class next_of_kin
                 fldMobileTelValidator.CssClass = "error alert alert-danger"
                 fldParentMobileTel.CssClass = "ErrorInput"
                 fldParentPhoneNumber.CssClass = "ErrorInput"
-            ElseIf fldParentMobileTel.Value.ToString = WorkingData.EnrolmentRequestRow.MobileTel Then
-                fldMobileTelValidator.ErrorMessage = "You must provide a different emergency contact number to your own mobile number " + WorkingData.EnrolmentRequestRow.MobileTel
+            ElseIf fldParentMobileTel.Value.ToString = WorkingData.ApplicationRequestRow.MobileTel Then
+                fldMobileTelValidator.ErrorMessage = "You must provide a different emergency contact number to your own mobile number " + WorkingData.ApplicationRequestRow.MobileTel
                 fldMobileTelValidator.IsValid = False
                 fldMobileTelValidator.CssClass = "error alert alert-danger"
                 fldParentMobileTel.CssClass = "ErrorInput"
@@ -95,9 +95,9 @@ Partial Class next_of_kin
         End If
 
 
-        If WorkingData.EnrolmentRequestRow.Email = WorkingData.EnrolmentRequestRow.ParentEmailAddress Then
+        If WorkingData.ApplicationRequestRow.Email = WorkingData.ApplicationRequestRow.ParentEmailAddress Then
             Dim v As New CustomValidator
-            v.ErrorMessage = "You must provide a different emergency email address to your own email address " + WorkingData.EnrolmentRequestRow.Email
+            v.ErrorMessage = "You must provide a different emergency email address to your own email address " + WorkingData.ApplicationRequestRow.Email
             v.IsValid = False
             Me.Page.Validators.Add(v)
 
@@ -157,13 +157,13 @@ Partial Class next_of_kin
         If Me.Page.IsValid Then
             'Set Is Emergency Contact to true if NOK fields are filled in
             If Not String.IsNullOrEmpty(Convert.ToString(fldParentFirstName.Value)) Then
-                WorkingData.EnrolmentRequestRow.NextOfKin = "1"
+                WorkingData.ApplicationRequestRow.NextOfKin = "1"
             End If
 
-            WorkingData.EnrolmentRequestRow.ParentAddress1 = Convert.ToString(txtAddress1.Value)
-            WorkingData.EnrolmentRequestRow.ParentAddress2 = Convert.ToString(txtAddress2.Value)
-            WorkingData.EnrolmentRequestRow.ParentAddress3 = Convert.ToString(txtAddress3.Value)
-            WorkingData.EnrolmentRequestRow.ParentAddress4 = Convert.ToString(txtAddress4.Value)
+            WorkingData.ApplicationRequestRow.ParentAddress1 = Convert.ToString(txtAddress1.Value)
+            WorkingData.ApplicationRequestRow.ParentAddress2 = Convert.ToString(txtAddress2.Value)
+            WorkingData.ApplicationRequestRow.ParentAddress3 = Convert.ToString(txtAddress3.Value)
+            WorkingData.ApplicationRequestRow.ParentAddress4 = Convert.ToString(txtAddress4.Value)
 
             Dim pcode As String = Replace(Convert.ToString(postcode.Value), " ", "")
             If Len(pcode) > 0 Then
@@ -171,27 +171,27 @@ Partial Class next_of_kin
                 'avoid dodgy postcodes breaking system
                 Try
                     If pcode.Substring(0, pcode.Length - 3).Length <= 4 Then
-                        WorkingData.EnrolmentRequestRow.ParentPostCodeOut = pcode.Substring(0, pcode.Length - 3)
+                        WorkingData.ApplicationRequestRow.ParentPostCodeOut = pcode.Substring(0, pcode.Length - 3)
                     Else
-                        WorkingData.EnrolmentRequestRow.ParentPostCodeOut = ""
+                        WorkingData.ApplicationRequestRow.ParentPostCodeOut = ""
                     End If
 
                 Catch ex As ArgumentOutOfRangeException
-                    WorkingData.EnrolmentRequestRow.ParentPostCodeOut = ""
+                    WorkingData.ApplicationRequestRow.ParentPostCodeOut = ""
                 End Try
 
                 Try
-                    WorkingData.EnrolmentRequestRow.ParentPostCodeIn = Right(pcode, 3)
+                    WorkingData.ApplicationRequestRow.ParentPostCodeIn = Right(pcode, 3)
                 Catch ex As ArgumentOutOfRangeException
-                    WorkingData.EnrolmentRequestRow.ParentPostCodeIn = ""
+                    WorkingData.ApplicationRequestRow.ParentPostCodeIn = ""
                 End Try
 
             End If
 
             If ddConsent.SelectedValue <> "" Then
-                WorkingData.EnrolmentRequestRow.StudentDetailUserDefined14 = ddConsent.SelectedValue
+                WorkingData.ApplicationRequestRow.StudentDetailUserDefined14 = ddConsent.SelectedValue
             Else
-                WorkingData.EnrolmentRequestRow.StudentDetailUserDefined14 = ""
+                WorkingData.ApplicationRequestRow.StudentDetailUserDefined14 = ""
             End If
 
             '            Dim blnApplicationsOnly As Boolean = WorkingData.ShoppingCart IsNot Nothing AndAlso Not WorkingData.ShoppingCart.ContainsItemsOfType("Enrolment")
@@ -206,9 +206,9 @@ Partial Class next_of_kin
         Dim dateOfBirthDate As Date?
         ReferenceDate = CDate(referenceDataString)
 
-        If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
-                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
+        If Not IsNothing(WorkingData.ApplicationRequestRow.DateOfBirth) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.ApplicationRequestRow.DateOfBirth.Value), Date)
             End If
 
             Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
