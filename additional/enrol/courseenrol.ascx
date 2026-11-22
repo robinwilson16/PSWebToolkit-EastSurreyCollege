@@ -1,4 +1,4 @@
-<%@ Control Language="VB"  AutoEventWireup="false" CodeFile="courseapply.ascx.vb" Inherits="courseapply"  %>
+<%@ Control Language="VB"  AutoEventWireup="false" CodeFile="courseenrol.ascx.vb" Inherits="courseenrol"  %>
 
 <%@ Register Assembly="PSWebEnrolmentKit" Namespace="CompassCC.ProSolution.PSWebEnrolmentKit"
     TagPrefix="cc1" %>
@@ -92,13 +92,13 @@
                                                             <strong>Start Date:</strong>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
-                                                            <%# If(Not (IsNothing(Eval("StartDate"))), Eval("StartDate"), "")%>
+                                                            <%# If(Not (IsNothing(Eval("StartDate"))), Eval("StartDate", "{0:dd/MM/yyyy}"), "")%>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
                                                             <strong>End Date:</strong>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
-                                                            <%# If(Not (IsNothing(Eval("EndDate"))), Eval("EndDate"), "")%>
+                                                            <%# If(Not (IsNothing(Eval("EndDate"))), Eval("EndDate", "{0:dd/MM/yyyy}"), "")%>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
                                                             <strong>Course Code:</strong>
@@ -192,7 +192,7 @@
             </div>
 
             <% Else %>
-                <div class="alert theme-warning" role="alert">
+                <div class="alert theme-warning mt-5 mb-5" role="alert">
                     <div class="row">
                         <div class="sm:col-1">
                             <h1><i class="fa-solid fa-basket-shopping"></i></h1>

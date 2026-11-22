@@ -172,18 +172,6 @@
 </div>
 
 <div class="bd-callout mt-5 mb-5">
-    <h4><i class="fa-solid fa-hashtag"></i> National Insurance</h4>
-
-    <div class="row">
-        <div class="sm:col-12 columns form-group">            
-            <%--<cc1:StudentEnrolmentField StudentEnrolmentFieldType="NI" ID="fldNI" runat="server"  IsRequired="false" LabelWidth="400" CustomCaption="National Insurance (NI) Number" title="The format of the number is two prefix letters, six digits and one suffix letter. Use UPPER CASE for letters.  An example is AB123456C. Neither of the first two letters can be D, F, I, Q, U or V. The second letter also cannot be O. The prefixes BG, GB, NK, KN, TN, NT and ZZ are not allowed" Pattern="^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$" />--%>
-            <cc1:StudentEnrolmentField StudentEnrolmentFieldType="NI" ID="fldNI" runat="server"  IsRequired="false" LabelWidth="400" CustomCaption="National Insurance (NI) Number" title="The format of the number is two prefix letters, six digits and one suffix letter. Use UPPER CASE for letters.  An example is AB123456C. Neither of the first two letters can be D, F, I, Q, U or V. The second letter also cannot be O. The prefixes BG, GB, NK, KN, TN, NT and ZZ are not allowed" />
-            <asp:CustomValidator ID="fldNIValidator" runat="server"></asp:CustomValidator>
-        </div>
-    </div>
-</div>
-
-<div class="bd-callout mt-5 mb-5">
     <h4><i class="fa-solid fa-scale-balanced"></i> Criminal Convictions</h4>
 
         <p>We must ask you to provide details of any <strong>unspent</strong> criminal convictions. You do not need to tell us about any spent convictions, as defined by the Rehabilitation of Offenders Act 1974, unless your course involves access to children and young adults under the age of 18. If you are enrolled to such a course, any failure to disclose such convictions may result in the College asking you to withdraw. Any information you give will be completely confidential and is only considered in relation to this enrolment.</p>
@@ -419,9 +407,11 @@
 
  <cc1:CCCButton  runat="server" Text="Continue" CausesValidation="true" CssClass="button" ID="btnContinue" />--%>
 
+<asp:TextBox ID="AcademicYearID" runat="server" CssClass="d-none" ClientIDMode="Static" />
+
 <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="alert theme-danger" ForeColor="" />
 
-<div class="alert theme-inverse" role="alert">
+<div class="alert theme-inverse mt-5 mb-5" role="alert">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -534,9 +524,12 @@
         function showAge() {
             
             let today = new Date();
-            let date31stAug = new Date(today.getFullYear() + `-08-31`);
+            let academicYearID = document.getElementById(`AcademicYearID`);
+            let referenceDateText = today.getFullYear().toString().substr(0, 2) + academicYearID.value.substring(0, 2) + `-08-31`;
+            //alert(`Reference Date: ` + referenceDateText);
+            let referenceDate = new Date(referenceDateText);
             let dateOfBirth = new Date(dob.value);
-            let age31stAug = calculateAge(dateOfBirth, date31stAug);
+            let age31stAug = calculateAge(dateOfBirth, referenceDate);
             let AgeInfo = document.getElementById(`AgeInfo`);
             let AgeField = document.getElementById(`Age31stAug`);
             
@@ -545,7 +538,7 @@
                 AgeField.value = ``;
             }
             else {
-                AgeInfo.innerHTML = `<i class="fa-solid fa-calendar-day"></i> Age on ${date31stAug.getDate()}${nth(date31stAug.getDate())} ${date31stAug.toLocaleString(`default`, { month: `long` })} ${date31stAug.getFullYear()}: <kbd>${age31stAug}</kbd>`;
+                AgeInfo.innerHTML = `<i class="fa-solid fa-calendar-day"></i> Age on ${referenceDate.getDate()}${nth(referenceDate.getDate())} ${referenceDate.toLocaleString(`default`, { month: `long` })} ${referenceDate.getFullYear()}: <kbd>${age31stAug}</kbd>`;
                 AgeField.value = age31stAug;
             }
         }

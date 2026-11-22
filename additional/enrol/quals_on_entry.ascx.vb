@@ -1,5 +1,6 @@
-Option Explicit Off
-Option Strict Off
+Option Explicit On
+Option Strict On
+
 Imports System.Collections.Generic
 Imports System.IO
 Imports System.Linq
@@ -14,8 +15,10 @@ Partial Class quals_on_entry
 
     Public ReferenceDate As Date
     Public Age19DOB As Date
-    Public IsUnder19 As Boolean
+
     Public IsUnder18 As Boolean
+    Public IsUnder19 As Boolean
+    Public IsUnder25 As Boolean
 
     Protected Overrides Sub OnLoad(ByVal e As System.EventArgs)
         MyBase.OnLoad(e)
@@ -67,7 +70,7 @@ Partial Class quals_on_entry
 
         'Get value
 
-        Dim ctlPriorCurrentValue As String = fldPriorAttainmentLevelID.Value
+        Dim ctlPriorCurrentValue As String = Convert.ToString(fldPriorAttainmentLevelID.Value)
 
         Dim ctlPrior As DropDownList = TryCast(fldPriorAttainmentLevelID.InternalFieldControl, DropDownList)
         Dim ctlPriorList As New List(Of ListItem)
@@ -108,7 +111,7 @@ Partial Class quals_on_entry
 
         'Prior Attainment Level
         If Not IsNothing(fldPriorAttainmentLevelID) Then
-            If String.IsNullOrEmpty(fldPriorAttainmentLevelID.Value) Then
+            If String.IsNullOrEmpty(Convert.ToString(fldPriorAttainmentLevelID.Value)) Then
                 fldPriorAttainmentLevelIDValidator.ErrorMessage = "Prior Attainment Level must not be blank"
                 fldPriorAttainmentLevelIDValidator.IsValid = False
                 fldPriorAttainmentLevelIDValidator.CssClass = "error alert alert-danger"
@@ -147,7 +150,7 @@ Partial Class quals_on_entry
                     End If
 
                     Dim v As New CustomValidator
-                    v.ErrorMessage = "Error with " + If(qualTitle, qualIDCustom) + " on line " + (rowCount).ToString + " as a subject has been selected but no grade or predicted grade has been entered. Please remove the subject or enter the grade."
+                    v.ErrorMessage = "Error with " + If(Convert.ToString(qualTitle), qualIDCustom) + " on line " + (rowCount).ToString + " as a subject has been selected but no grade or predicted grade has been entered. Please remove the subject or enter the grade."
                     v.IsValid = False
                     Me.Page.Validators.Add(v)
                 ElseIf (String.IsNullOrEmpty(qualID) And String.IsNullOrEmpty(qualIDCustom)) And Not (String.IsNullOrEmpty(grade) And String.IsNullOrEmpty(predictedGrade)) Then
@@ -271,7 +274,7 @@ Partial Class quals_on_entry
                 Dim removeQOEButton As New Button
                 removeQOEButton.Text = "X"
                 removeQOEButton.CssClass = "btn-solid btn-styled theme-danger"
-                removeQOEButton.CommandArgument = i
+                removeQOEButton.CommandArgument = Convert.ToString(i)
                 removeQOEButton.CommandName = "RemoveQOEButton"
                 removeQOEButton.CausesValidation = False
 
@@ -408,24 +411,34 @@ Partial Class quals_on_entry
         Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
 
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(referenceDataString)
+        ReferenceDate = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then
-                dateOfBirthDate = CType(WorkingData.EnrolmentRequestRow.DateOfBirth.Value, Date)
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
             End If
-            Dim age19DOB As DateTime = referenceDate.AddYears(-19)
-            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
-                IsUnder19 = True
-            Else
-                IsUnder19 = False
-            End If
-            Dim age18DOB As DateTime = referenceDate.AddYears(-18)
+
+            Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
             If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
                 IsUnder18 = True
             Else
                 IsUnder18 = False
             End If
+
+            Dim age19DOB As DateTime = ReferenceDate.AddYears(-19)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
+                IsUnder19 = True
+            Else
+                IsUnder19 = False
+            End If
+
+            Dim age25DOB As DateTime = ReferenceDate.AddYears(-25)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age25DOB Then 'Under 25
+                IsUnder25 = True
+            Else
+                IsUnder25 = False
+            End If
+
         End If
         Return True
     End Function

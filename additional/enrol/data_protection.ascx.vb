@@ -1,3 +1,6 @@
+Option Explicit On
+Option Strict On
+
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Linq
@@ -15,8 +18,10 @@ Partial Class data_protection
 
     Public ReferenceDate As Date
     Public Age19DOB As Date
-    Public IsUnder19 As Boolean
+
     Public IsUnder18 As Boolean
+    Public IsUnder19 As Boolean
+    Public IsUnder25 As Boolean
 
     Protected Overrides Sub OnLoad(e As EventArgs)
         MyBase.OnLoad(e)
@@ -80,7 +85,7 @@ Partial Class data_protection
 
     Private Sub CheckData()
 
-        WorkingData.EnrolmentRequestRow.SentMarketingInfo = selectStayingInTouch.SelectedValue
+        WorkingData.EnrolmentRequestRow.SentMarketingInfo = Convert.ToBoolean(selectStayingInTouch.SelectedValue)
         WorkingData.EnrolmentRequestRow.StudentSignature = Signature.Signature
 
     End Sub
@@ -121,24 +126,34 @@ Partial Class data_protection
         Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
 
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(referenceDataString)
+        ReferenceDate = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then
-                dateOfBirthDate = CType(WorkingData.EnrolmentRequestRow.DateOfBirth.Value, Date)
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
             End If
-            Dim age19DOB As DateTime = referenceDate.AddYears(-19)
-            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
-                IsUnder19 = True
-            Else
-                IsUnder19 = False
-            End If
-            Dim age18DOB As DateTime = referenceDate.AddYears(-18)
+
+            Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
             If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
                 IsUnder18 = True
             Else
                 IsUnder18 = False
             End If
+
+            Dim age19DOB As DateTime = ReferenceDate.AddYears(-19)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
+                IsUnder19 = True
+            Else
+                IsUnder19 = False
+            End If
+
+            Dim age25DOB As DateTime = ReferenceDate.AddYears(-25)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age25DOB Then 'Under 25
+                IsUnder25 = True
+            Else
+                IsUnder25 = False
+            End If
+
         End If
         Return True
     End Function

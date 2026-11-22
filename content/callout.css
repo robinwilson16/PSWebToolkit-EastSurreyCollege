@@ -66,3 +66,10 @@
     --bd-callout-border: var(--bs-danger-border);
     --bd-callout-band: color-mix(in oklch, var(--bs-danger-border), var(--bs-danger-fg-emphasis))
 }
+
+@media (prefers-color-scheme: dark) {
+    .bd-callout {
+        background-color: #222a31;
+        color: #e6edf3;
+    }
+}

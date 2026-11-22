@@ -268,7 +268,7 @@ QCF Certificate at Level 3 which is 30 to 36 credits</td>
 
 <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="alert theme-danger"  />
 
-<div class="alert theme-inverse" role="alert">
+<div class="alert theme-inverse mt-5 mb-5" role="alert">
     <div class="container">
         <div class="row">
             <div class="col">

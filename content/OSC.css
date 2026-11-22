@@ -51,6 +51,21 @@
     --bd-callout-band: #92C947;
 }
 
+@media (prefers-color-scheme: dark) {
+    .bd-callout {
+        --bd-callout-border: #92C947;
+        --bd-callout-band: #92C947;
+    }
+
+        .bd-callout h4 {
+            color: #b6e184;
+        }
+
+        .bd-callout a {
+            color: #b6e184;
+        }
+}
+
 a.theme-danger {
     background-color: #E62845;
     color: #FFFFFF;
@@ -58,4 +73,10 @@ a.theme-danger {
 
 .theme-danger h4.alert-heading {
     color: #E62845;
+}
+
+@media (prefers-color-scheme: dark) {
+    table.TableInline tr td input {
+        accent-color: #92c947;
+    }
 }

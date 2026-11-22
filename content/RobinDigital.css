@@ -29,6 +29,26 @@ input[type=checkbox] {
     font-weight: normal;
 }
 
+/* Fix Browser Dark Mode Display Issues */
+@media (prefers-color-scheme: dark) {
+    input,
+    textarea,
+    select {
+        color: #f5f5f5;
+        background-color: #222;
+        border-color: #666;
+      }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #bbb;
+    }
+
+    .body-content {
+        background-color: #222;
+    }
+}
+
 /* Signature Panel */
 .student-signature-pad {
     border: 1px solid #ccc;
@@ -75,6 +95,14 @@ table.TableInline tr:last-child td {
 
 table.TableInline tr td input {
     margin-right: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    table.TableInline tr td {
+        color: #f5f5f5;
+        background-color: #2b2b2b;
+        border-color: #666;
+    }
 }
 
 /* Format Radio Buttons across multiple lines */

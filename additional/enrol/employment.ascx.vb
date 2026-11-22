@@ -1,4 +1,7 @@
-﻿Imports System.Linq
+﻿Option Explicit On
+Option Strict On
+
+Imports System.Linq
 Imports CompassCC.CCCSystem.CCCCommon
 Imports CompassCC.ProSolution.PSWebEnrolmentKit
 
@@ -10,8 +13,10 @@ Partial Class employment
 
     Public ReferenceDate As Date
     Public Age19DOB As Date
-    Public IsUnder19 As Boolean
+
     Public IsUnder18 As Boolean
+    Public IsUnder19 As Boolean
+    Public IsUnder25 As Boolean
 
     Public Is19PlusOutsideAreaConfirmed As Boolean
 
@@ -42,9 +47,9 @@ Partial Class employment
 
 
             If WorkingData.EnrolmentRequestEmploymentHistoryRow.IsSelfEmployed Then
-                rdoSelfEmp.SelectedValue = 1
+                rdoSelfEmp.SelectedValue = "1"
             Else
-                rdoSelfEmp.SelectedValue = 0
+                rdoSelfEmp.SelectedValue = "0"
             End If
 
         End If
@@ -80,7 +85,7 @@ Partial Class employment
 
 
             If rdoSelfEmp.SelectedValue.ToString.Length > 0 Then
-                WorkingData.EnrolmentRequestEmploymentHistoryRow.IsSelfEmployed = rdoSelfEmp.SelectedValue
+                WorkingData.EnrolmentRequestEmploymentHistoryRow.IsSelfEmployed = Convert.ToBoolean(rdoSelfEmp.SelectedValue)
             End If
 
             If Not IsNothing(chkLowWage) Then
@@ -165,24 +170,34 @@ Partial Class employment
         Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
 
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(referenceDataString)
+        ReferenceDate = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then
-                dateOfBirthDate = CType(WorkingData.EnrolmentRequestRow.DateOfBirth.Value, Date)
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
             End If
-            Dim age19DOB As DateTime = referenceDate.AddYears(-19)
-            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
-                IsUnder19 = True
-            Else
-                IsUnder19 = False
-            End If
-            Dim age18DOB As DateTime = referenceDate.AddYears(-18)
+
+            Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
             If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
                 IsUnder18 = True
             Else
                 IsUnder18 = False
             End If
+
+            Dim age19DOB As DateTime = ReferenceDate.AddYears(-19)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
+                IsUnder19 = True
+            Else
+                IsUnder19 = False
+            End If
+
+            Dim age25DOB As DateTime = ReferenceDate.AddYears(-25)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age25DOB Then 'Under 25
+                IsUnder25 = True
+            Else
+                IsUnder25 = False
+            End If
+
         End If
         Return True
     End Function

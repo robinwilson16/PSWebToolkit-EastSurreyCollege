@@ -1,5 +1,5 @@
 Option Explicit On
-Option Strict Off
+Option Strict On
 
 Imports System.Collections.Generic
 Imports System.Linq

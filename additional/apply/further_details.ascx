@@ -218,6 +218,7 @@
         </div>
     </div>
 
+    <%If IsUnder25 = True Then %>
     <div class="row">
         <div class="sm:col-12 columns form-group"> 
             <span class="textfieldlabelrequired">Have you recently left care (Care Leaver)?</span>
@@ -229,6 +230,7 @@
             <asp:CustomValidator ID="fldCareLeaverValidator" runat="server"></asp:CustomValidator>
         </div>
     </div>
+    <%End If %>
 
     <%If IsUnder19 = True Then %>
     <div class="row">
@@ -244,6 +246,7 @@
     </div>
     <%End If %>
 
+    <%If IsUnder25 = True Then %>
     <div class="row">
         <div class="sm:col-12 columns form-group"> 
             <span class="textfieldlabelrequired">Do you have an educational health care plan (EHCP)?</span>
@@ -255,6 +258,7 @@
             <asp:CustomValidator ID="fldEHCPValidator" runat="server"></asp:CustomValidator>
         </div>
     </div>
+    <%End If %>
 
     <%--<div class="row">
         <div class="sm:col-12 columns form-group mb-3">
@@ -344,7 +348,7 @@
 
 <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="alert theme-danger" ForeColor="" />
 
-<div class="alert theme-inverse" role="alert">
+<div class="alert theme-inverse mt-5 mb-5" role="alert">
     <div class="container">
         <div class="row">
             <div class="col">

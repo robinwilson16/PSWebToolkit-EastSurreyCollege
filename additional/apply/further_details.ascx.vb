@@ -1,4 +1,5 @@
-﻿
+﻿Option Explicit On
+Option Strict On
 
 Imports System.Collections.Generic
 Imports System.Linq
@@ -14,8 +15,10 @@ Partial Class further_details
 
     Public ReferenceDate As Date
     Public Age19DOB As Date
-    Public IsUnder19 As Boolean
+
     Public IsUnder18 As Boolean
+    Public IsUnder19 As Boolean
+    Public IsUnder25 As Boolean
 
     Public IsUKResident As Boolean
 
@@ -30,7 +33,7 @@ Partial Class further_details
         'If Not Session("agecourse") Is Nothing Then lblAgeCourse.Text = CType("Your age on " & Session("startdate") & ": " & Session("agecourse") & " (" & Session("ageGroup"), String) & ")"
 
         If Not IsPostBack Then
-            If Session("dis") <> "" Then selectLearnDiff.SelectedValue = Session("dis")
+            If Convert.ToString(Session("dis")) <> "" Then selectLearnDiff.SelectedValue = Convert.ToString(Session("dis"))
 
             'Booleans default to false when not set
             If WorkingData.EnrolmentRequestRow.NationalityID = "" Then
@@ -220,7 +223,7 @@ Partial Class further_details
                 Dim removeDisabilityButton As New Button
                 removeDisabilityButton.Text = "X"
                 removeDisabilityButton.CssClass = "btn-solid btn-styled theme-danger"
-                removeDisabilityButton.CommandArgument = i
+                removeDisabilityButton.CommandArgument = Convert.ToString(i)
                 removeDisabilityButton.CommandName = "RemoveQOEButton"
 
                 AddHandler removeDisabilityButton.Command, AddressOf RemoveDisabilityButton_Click
@@ -303,7 +306,7 @@ Partial Class further_details
 
         'Drop-downs that are set as required are not picked up
         If Not IsNothing(fldNationalityID) Then
-            If String.IsNullOrEmpty(fldNationalityID.Value) Then
+            If String.IsNullOrEmpty(Convert.ToString(fldNationalityID.Value)) Then
                 fldNationalityIDValidator.ErrorMessage = "Nationality must not be blank"
                 fldNationalityIDValidator.IsValid = False
                 fldNationalityIDValidator.CssClass = "error alert alert-danger"
@@ -312,7 +315,7 @@ Partial Class further_details
         End If
 
         If Not IsNothing(fldCountryID) Then
-            If String.IsNullOrEmpty(fldCountryID.Value) Then
+            If String.IsNullOrEmpty(Convert.ToString(fldCountryID.Value)) Then
                 fldCountryIDValidator.ErrorMessage = "Main Country of Residence must not be blank"
                 fldCountryIDValidator.IsValid = False
                 fldCountryIDValidator.CssClass = "error alert alert-danger"
@@ -352,7 +355,7 @@ Partial Class further_details
 
             If selectLearnDiff.SelectedValue = "1" Then
                 Dim disabilityCategoryID As Integer = row.DisabilityCategoryID.GetValueOrDefault
-                Dim isPrimary As String = row.IsPrimary.GetValueOrDefault
+                Dim isPrimary As Boolean = row.IsPrimary.GetValueOrDefault
 
                 If Not disabilityCategoryID > 0 Then
                     Dim v As New CustomValidator
@@ -436,7 +439,7 @@ Partial Class further_details
             fldInCare.Style.Add("border", "1px solid red")
         End If
 
-        If fldCareLeaver.SelectedValue = "" Then
+        If fldCareLeaver.SelectedValue = "" And IsUnder25 = True Then
             fldCareLeaverValidator.ErrorMessage = "Please confirm if you are a care leaver"
             fldCareLeaverValidator.IsValid = False
             fldCareLeaverValidator.CssClass = "error alert alert-danger"
@@ -452,7 +455,7 @@ Partial Class further_details
             fldYoungCarer.Style.Add("border", "1px solid red")
         End If
 
-        If fldEHCP.SelectedValue = "" Then
+        If fldEHCP.SelectedValue = "" And IsUnder25 = True Then
             fldEHCPValidator.ErrorMessage = "Please confirm if you have an educational health care plan"
             fldEHCPValidator.IsValid = False
             fldEHCPValidator.CssClass = "error alert alert-danger"
@@ -515,7 +518,7 @@ Partial Class further_details
 
         Session("dis") = selectLearnDiff.SelectedValue
 
-        If Session("dis") <> "" Then WorkingData.EnrolmentRequestRow.LearningDiffOrDisID = Session("dis")
+        If Convert.ToString(Session("dis")) <> "" Then WorkingData.EnrolmentRequestRow.LearningDiffOrDisID = Convert.ToString(Session("dis"))
 
         Me.Page.Validate()
 
@@ -581,7 +584,7 @@ Partial Class further_details
         ' Me.Page.Validate()
 
         Session("dis") = selectLearnDiff.SelectedValue
-        If Session("dis") <> "" Then WorkingData.EnrolmentRequestRow.LearningDiffOrDisID = Session("dis")
+        If Convert.ToString(Session("dis")) <> "" Then WorkingData.EnrolmentRequestRow.LearningDiffOrDisID = Convert.ToString(Session("dis"))
 
         Response.Redirect(GetResourceValue("apply_next_of_kin"))
 
@@ -594,24 +597,34 @@ Partial Class further_details
         Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
 
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(referenceDataString)
+        ReferenceDate = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then
-                dateOfBirthDate = CType(WorkingData.EnrolmentRequestRow.DateOfBirth.Value, Date)
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
             End If
-            Dim age19DOB As DateTime = referenceDate.AddYears(-19)
-            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
-                IsUnder19 = True
-            Else
-                IsUnder19 = False
-            End If
-            Dim age18DOB As DateTime = referenceDate.AddYears(-18)
+
+            Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
             If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
                 IsUnder18 = True
             Else
                 IsUnder18 = False
             End If
+
+            Dim age19DOB As DateTime = ReferenceDate.AddYears(-19)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
+                IsUnder19 = True
+            Else
+                IsUnder19 = False
+            End If
+
+            Dim age25DOB As DateTime = ReferenceDate.AddYears(-25)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age25DOB Then 'Under 25
+                IsUnder25 = True
+            Else
+                IsUnder25 = False
+            End If
+
         End If
         Return True
     End Function

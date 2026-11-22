@@ -205,7 +205,7 @@
 <%--<cc1:CCCButton ID="btnBack" runat="server" Text="Back" CssClass="button" LinkResource="checkout_employment_FE_aspx"  />
 <cc1:CCCButton ID="btnContinue" runat="server" Text="Continue" CssClass="button"  LinkResource="checkout_photo_FE_aspx" CausesValidation="true" />--%>
 
-<div class="alert theme-inverse" role="alert">
+<div class="alert theme-inverse mt-5 mb-5" role="alert">
     <div class="container">
         <div class="row">
             <div class="col">

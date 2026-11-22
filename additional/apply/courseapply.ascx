@@ -92,13 +92,13 @@
                                                             <strong>Start Date:</strong>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
-                                                            <%# If(Not (IsNothing(Eval("StartDate"))), Eval("StartDate"), "")%>
+                                                            <%# If(Not (IsNothing(Eval("StartDate"))), Eval("StartDate", "{0:dd/MM/yyyy}"), "")%>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
                                                             <strong>End Date:</strong>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
-                                                            <%# If(Not (IsNothing(Eval("EndDate"))), Eval("EndDate"), "")%>
+                                                            <%# If(Not (IsNothing(Eval("EndDate"))), Eval("EndDate", "{0:dd/MM/yyyy}"), "")%>
                                                         </div>
                                                         <div class="sm:col-6 md:col-3">
                                                             <strong>Course Code:</strong>
@@ -174,7 +174,7 @@
                     </div>
                 </div>
 
-                <div class="alert theme-inverse" role="alert">
+                <div class="alert theme-inverse mt-5 mb-5" role="alert">
                     <div class="container">
                         <div class="row">
                             <div class="col">

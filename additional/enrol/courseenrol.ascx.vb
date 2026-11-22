@@ -1,12 +1,12 @@
 Option Explicit On
-Option Strict Off
+Option Strict On
 
 Imports System.Collections.Generic
 Imports System.Linq
 Imports CompassCC.CCCSystem.CCCCommon
 Imports CompassCC.ProSolution.PSWebEnrolmentKit
 
-Partial Class courseapply
+Partial Class courseenrol
     Inherits webenrolmentcontrolvalidate
 
     Public tblOffering As New OfferingDataTable

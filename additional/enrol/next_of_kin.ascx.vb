@@ -1,5 +1,5 @@
-﻿'Option Explicit On
-'Option Strict On
+﻿Option Explicit On
+Option Strict On
 
 Imports CompassCC.ProSolution.PSWebEnrolmentKit
 Imports CompassCC.CCCSystem.CCCCommon
@@ -19,8 +19,10 @@ Partial Class next_of_kin
 
     Public ReferenceDate As Date
     Public Age19DOB As Date
-    Public IsUnder19 As Boolean
+
     Public IsUnder18 As Boolean
+    Public IsUnder19 As Boolean
+    Public IsUnder25 As Boolean
 
     Public ConsentRequired As Boolean
 
@@ -65,7 +67,7 @@ Partial Class next_of_kin
 
         'Mobile Tel
         If Not IsNothing(fldParentMobileTel) And Not IsNothing(fldParentPhoneNumber) Then
-            If String.IsNullOrEmpty(fldParentMobileTel.Value) And String.IsNullOrEmpty(fldParentPhoneNumber.Value) Then
+            If String.IsNullOrEmpty(Convert.ToString(fldParentMobileTel.Value)) And String.IsNullOrEmpty(Convert.ToString(fldParentPhoneNumber.Value)) Then
                 fldMobileTelValidator.ErrorMessage = "Please enter at least one Parent, Guardian or Carer Telephone number."
                 fldMobileTelValidator.IsValid = False
                 fldMobileTelValidator.CssClass = "error alert alert-danger"
@@ -103,7 +105,7 @@ Partial Class next_of_kin
 
         'Parental Relationship
         If Not IsNothing(fldParentRelationshipID) Then
-            If String.IsNullOrEmpty(fldParentRelationshipID.Value) Then
+            If String.IsNullOrEmpty(Convert.ToString(fldParentRelationshipID.Value)) Then
                 fldParentRelationshipIDValidator.ErrorMessage = "Parental Relationship must not be blank"
                 fldParentRelationshipIDValidator.IsValid = False
                 fldParentRelationshipIDValidator.CssClass = "error alert alert-danger"
@@ -154,16 +156,16 @@ Partial Class next_of_kin
 
         If Me.Page.IsValid Then
             'Set Is Emergency Contact to true if NOK fields are filled in
-            If Not String.IsNullOrEmpty(fldParentFirstName.Value) Then
-                WorkingData.EnrolmentRequestRow.NextOfKin = 1
+            If Not String.IsNullOrEmpty(Convert.ToString(fldParentFirstName.Value)) Then
+                WorkingData.EnrolmentRequestRow.NextOfKin = "1"
             End If
 
-            WorkingData.EnrolmentRequestRow.ParentAddress1 = txtAddress1.Value
-            WorkingData.EnrolmentRequestRow.ParentAddress2 = txtAddress2.Value
-            WorkingData.EnrolmentRequestRow.ParentAddress3 = txtAddress3.Value
-            WorkingData.EnrolmentRequestRow.ParentAddress4 = txtAddress4.Value
+            WorkingData.EnrolmentRequestRow.ParentAddress1 = Convert.ToString(txtAddress1.Value)
+            WorkingData.EnrolmentRequestRow.ParentAddress2 = Convert.ToString(txtAddress2.Value)
+            WorkingData.EnrolmentRequestRow.ParentAddress3 = Convert.ToString(txtAddress3.Value)
+            WorkingData.EnrolmentRequestRow.ParentAddress4 = Convert.ToString(txtAddress4.Value)
 
-            Dim pcode As String = Replace(postcode.Value, " ", "")
+            Dim pcode As String = Replace(Convert.ToString(postcode.Value), " ", "")
             If Len(pcode) > 0 Then
 
                 'avoid dodgy postcodes breaking system
@@ -202,24 +204,34 @@ Partial Class next_of_kin
         Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
 
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(referenceDataString)
+        ReferenceDate = CDate(referenceDataString)
 
         If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            If Not String.IsNullOrEmpty(WorkingData.EnrolmentRequestRow.DateOfBirth.Value) Then
-                dateOfBirthDate = CType(WorkingData.EnrolmentRequestRow.DateOfBirth.Value, Date)
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
             End If
-            Dim age19DOB As DateTime = referenceDate.AddYears(-19)
-            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
-                IsUnder19 = True
-            Else
-                IsUnder19 = False
-            End If
-            Dim age18DOB As DateTime = referenceDate.AddYears(-18)
+
+            Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
             If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
                 IsUnder18 = True
             Else
                 IsUnder18 = False
             End If
+
+            Dim age19DOB As DateTime = ReferenceDate.AddYears(-19)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
+                IsUnder19 = True
+            Else
+                IsUnder19 = False
+            End If
+
+            Dim age25DOB As DateTime = ReferenceDate.AddYears(-25)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age25DOB Then 'Under 25
+                IsUnder25 = True
+            Else
+                IsUnder25 = False
+            End If
+
         End If
         Return True
     End Function

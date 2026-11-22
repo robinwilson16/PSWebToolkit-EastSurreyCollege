@@ -419,9 +419,11 @@
 
  <cc1:CCCButton  runat="server" Text="Continue" CausesValidation="true" CssClass="button" ID="btnContinue" />--%>
 
+<asp:TextBox ID="AcademicYearID" runat="server" CssClass="d-none" ClientIDMode="Static" />
+
 <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="alert theme-danger" ForeColor="" />
 
-<div class="alert theme-inverse" role="alert">
+<div class="alert theme-inverse mt-5 mb-5" role="alert">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -532,20 +534,23 @@
         });
 
         function showAge() {
-            
+
             let today = new Date();
-            let date31stAug = new Date(today.getFullYear() + `-08-31`);
+            let academicYearID = document.getElementById(`AcademicYearID`);
+            let referenceDateText = today.getFullYear().toString().substr(0, 2) + academicYearID.value.substring(0, 2) + `-08-31`;
+            //alert(`Reference Date: ` + referenceDateText);
+            let referenceDate = new Date(referenceDateText);
             let dateOfBirth = new Date(dob.value);
-            let age31stAug = calculateAge(dateOfBirth, date31stAug);
+            let age31stAug = calculateAge(dateOfBirth, referenceDate);
             let AgeInfo = document.getElementById(`AgeInfo`);
             let AgeField = document.getElementById(`Age31stAug`);
-            
+
             if (isNaN(dateOfBirth) || (dateOfBirth === ` `)) {
                 AgeInfo.innerHTML = `&nbsp;`;
                 AgeField.value = ``;
             }
             else {
-                AgeInfo.innerHTML = `<i class="fa-solid fa-calendar-day"></i> Age on ${date31stAug.getDate()}${nth(date31stAug.getDate())} ${date31stAug.toLocaleString(`default`, { month: `long` })} ${date31stAug.getFullYear()}: <kbd>${age31stAug}</kbd>`;
+                AgeInfo.innerHTML = `<i class="fa-solid fa-calendar-day"></i> Age on ${referenceDate.getDate()}${nth(referenceDate.getDate())} ${referenceDate.toLocaleString(`default`, { month: `long` })} ${referenceDate.getFullYear()}: <kbd>${age31stAug}</kbd>`;
                 AgeField.value = age31stAug;
             }
         }

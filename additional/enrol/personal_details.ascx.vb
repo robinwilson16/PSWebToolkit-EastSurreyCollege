@@ -1,5 +1,5 @@
-﻿'Option Explicit On
-'Option Strict On
+﻿Option Explicit On
+Option Strict On
 
 Imports System.Data
 Imports System.Data.SqlClient
@@ -18,8 +18,10 @@ Partial Class personal_details
 
     Public ReferenceDate As Date
     Public Age19DOB As Date
-    Public IsUnder19 As Boolean
+
     Public IsUnder18 As Boolean
+    Public IsUnder19 As Boolean
+    Public IsUnder25 As Boolean
 
     Public MinAgeAllowed As Integer = 15
     Public MaxAgeAllowed As Integer = 70
@@ -27,6 +29,8 @@ Partial Class personal_details
     Protected Overrides Sub OnLoad(e As EventArgs)
         GetCourseDetails()
         SetAgeChecks()
+        AcademicYearID.Text = Convert.ToString(OfferingRow.AcademicYearID)
+
 
         If IsUnder19 = False Then
             fldNI.IsRequired = True
@@ -40,11 +44,11 @@ Partial Class personal_details
         End If
 
         If IsDate(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
-            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined1 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth.GetValueOrDefault, Date), ReferenceDate) / 365.25)
+            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined1 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth.GetValueOrDefault, Date), ReferenceDate) / 365.25).ToString()
         End If
 
         If IsDate(WorkingData.EnrolmentRequestRow.DateOfBirth) And IsDate(OfferingDataTable.FetchByOfferingID(OfferingID).StartDate) Then
-            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined2 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth.GetValueOrDefault, Date), OfferingDataTable.FetchByOfferingID(OfferingID).StartDate.GetValueOrDefault) / 365.25)
+            WorkingData.EnrolmentRequestRow.StudentDetailUserDefined2 = Math.Floor(DateDiff(DateInterval.Day, CType(WorkingData.EnrolmentRequestRow.DateOfBirth.GetValueOrDefault, Date), OfferingDataTable.FetchByOfferingID(OfferingID).StartDate.GetValueOrDefault) / 365.25).ToString()
         End If
 
 
@@ -52,7 +56,7 @@ Partial Class personal_details
             '   UpdateAddress()
 
             If ddCollegeAccomodation.SelectedValue = "1" Then
-                RadioButtonListAlt.SelectedValue = 1 'Different Address
+                RadioButtonListAlt.SelectedValue = "1" 'Different Address
             End If
 
         Else
@@ -80,10 +84,10 @@ Partial Class personal_details
                 fldParentCarerInPrison.SelectedValue = "No"
             End If
 
-            If WorkingData.EnrolmentRequestRow.AccommodationTypeID = 11 Then
-                ddCollegeAccomodation.SelectedValue = 1
-            ElseIf WorkingData.EnrolmentRequestRow.AccommodationTypeID > 0 Then
-                ddCollegeAccomodation.SelectedValue = 0
+            If WorkingData.EnrolmentRequestRow.AccommodationTypeID = "11" Then
+                ddCollegeAccomodation.SelectedValue = "1"
+            ElseIf WorkingData.EnrolmentRequestRow.AccommodationTypeID > "0" Then
+                ddCollegeAccomodation.SelectedValue = "0"
             Else
                 ddCollegeAccomodation.SelectedValue = Nothing
             End If
@@ -202,22 +206,34 @@ Partial Class personal_details
         Dim referenceDataString = Today().Year.ToString().Substring(0, 2) & academicYear.Substring(3, 2) & "-08-31"
 
         Dim dateOfBirthDate As Date?
-        Dim referenceDate As DateTime = CDate(referenceDataString)
+        ReferenceDate = CDate(referenceDataString)
 
-        If Not String.IsNullOrEmpty(fldDateOfBirth.Value) Then
-            dateOfBirthDate = CType(fldDateOfBirth.Value, Date)
-        End If
-        Dim age19DOB As DateTime = referenceDate.AddYears(-19)
-        If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
-            IsUnder19 = True
-        Else
-            IsUnder19 = False
-        End If
-        Dim age18DOB As DateTime = referenceDate.AddYears(-18)
-        If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
-            IsUnder18 = True
-        Else
-            IsUnder18 = False
+        If Not IsNothing(WorkingData.EnrolmentRequestRow.DateOfBirth) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value)) Then
+                dateOfBirthDate = CType(Convert.ToString(WorkingData.EnrolmentRequestRow.DateOfBirth.Value), Date)
+            End If
+
+            Dim age18DOB As DateTime = ReferenceDate.AddYears(-18)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age18DOB Then 'Under 18
+                IsUnder18 = True
+            Else
+                IsUnder18 = False
+            End If
+
+            Dim age19DOB As DateTime = ReferenceDate.AddYears(-19)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age19DOB Then 'Under 19
+                IsUnder19 = True
+            Else
+                IsUnder19 = False
+            End If
+
+            Dim age25DOB As DateTime = ReferenceDate.AddYears(-25)
+            If Not IsNothing(dateOfBirthDate) And dateOfBirthDate > age25DOB Then 'Under 25
+                IsUnder25 = True
+            Else
+                IsUnder25 = False
+            End If
+
         End If
         Return True
     End Function
@@ -263,19 +279,19 @@ Partial Class personal_details
         MyBase.CreateChildControls()
 
         'If IsPostBack Then
-        If Not String.IsNullOrEmpty(Session("RadioButtonListAlt")) Then
-            RadioButtonListAlt.SelectedValue = Session("RadioButtonListAlt")
+        If Not String.IsNullOrEmpty(Convert.ToString(Session("RadioButtonListAlt"))) Then
+            RadioButtonListAlt.SelectedValue = Convert.ToString(Session("RadioButtonListAlt"))
         End If
 
-        If Not String.IsNullOrEmpty(Session("19PlusOutsideAreaConfirmed")) Then
-            ConfirmNoFundingAvailable.Checked = Session("19PlusOutsideAreaConfirmed")
+        If Not String.IsNullOrEmpty(Convert.ToString(Session("19PlusOutsideAreaConfirmed"))) Then
+            ConfirmNoFundingAvailable.Checked = Convert.ToBoolean(Session("19PlusOutsideAreaConfirmed"))
         End If
     End Sub
 
     Public Overrides Sub ValidateControl()
         'If Len(txtAddress1.Value) = 0 Then
         '    Dim v As New CustomValidator
-        '    v.ErrorMessage = "You must enter the 1st line of the address"
+        '    v.ErrorMessage = "You must enter the 1St line Of the address"
         '    v.IsValid = False
         '    Me.Page.Validators.Add(v)
         'End If
@@ -283,19 +299,19 @@ Partial Class personal_details
         'Title
         'If Not IsNothing(fldTitle) Then
         '    If String.IsNullOrEmpty(fldTitle.Value) Then
-        '        fldTitleValidator.ErrorMessage = "Title must not be blank"
+        '        fldTitleValidator.ErrorMessage = "Title must Not be blank"
         '        fldTitleValidator.IsValid = False
-        '        fldTitleValidator.CssClass = "error alert alert-danger"
+        '        fldTitleValidator.CssClass = "Error alert alert-danger"
         '        fldTitle.CssClass = "ErrorInput"
         '    End If
         'End If
 
         'Forename (Single Name Only)
-        If Not String.IsNullOrEmpty(fldFirstForename.Value) Then
+        If Not String.IsNullOrEmpty(Convert.ToString(fldFirstForename.Value)) Then
             If (fldFirstForename.Value.ToString().Contains(" ")) Then
-                fldFirstForenameValidator.ErrorMessage = "Forename or Given Name must only contain your first name with no spaces. Please Enter Any middle names into the Other Forenames (Middle Names) box below."
+                fldFirstForenameValidator.ErrorMessage = "Forename Or Given Name must only contain your first name With no spaces. Please Enter Any middle names into the Other Forenames (Middle Names) box below."
                 fldFirstForenameValidator.IsValid = False
-                fldFirstForenameValidator.CssClass = "error alert alert-danger"
+                fldFirstForenameValidator.CssClass = "Error alert alert-danger"
                 fldFirstForename.CssClass = "ErrorInput"
             End If
         End If
@@ -306,62 +322,61 @@ Partial Class personal_details
 
             Dim dateOfBirthDate As Date?
 
-            If Not String.IsNullOrEmpty(fldDateOfBirth.Value) Then
+            If Not String.IsNullOrEmpty(Convert.ToString(fldDateOfBirth.Value)) Then
                 dateOfBirthDate = CType(fldDateOfBirth.Value, Date)
             End If
 
-            Dim dateToCheckDOB As Date = CDate(Today().Year & "-08-31")
-            Dim minAllowedDOB As Date = dateToCheckDOB.AddYears(-MinAgeAllowed)
-            Dim maxAllowedDOB As Date = dateToCheckDOB.AddYears(-MaxAgeAllowed)
+            Dim minAllowedDOB As Date = ReferenceDate.AddYears(-MinAgeAllowed)
+            Dim maxAllowedDOB As Date = ReferenceDate.AddYears(-MaxAgeAllowed)
 
-            If String.IsNullOrEmpty(fldDateOfBirth.Value) Then
-                fldDateOfBirthValidator.ErrorMessage = "Please enter your Date of Birth"
+            If String.IsNullOrEmpty(Convert.ToString(fldDateOfBirth.Value)) Then
+                fldDateOfBirthValidator.ErrorMessage = "Please enter your Date Of Birth"
                 fldDateOfBirthValidator.IsValid = False
-                fldDateOfBirthValidator.CssClass = "error alert alert-danger"
+                fldDateOfBirthValidator.CssClass = "Error alert alert-danger"
                 fldDateOfBirth.CssClass = "ErrorInput"
             ElseIf Not IsNothing(dateOfBirthDate) And dateOfBirthDate > minAllowedDOB Then
-                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged under " & MinAgeAllowed & " (on " & dateToCheckDOB.ToString("dd MMM yyyy") & ")"
+                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged under " & MinAgeAllowed & " (On " & ReferenceDate.ToString("dd MMM yyyy") & ")"
                 fldDateOfBirthValidator.IsValid = False
-                fldDateOfBirthValidator.CssClass = "error alert alert-danger"
+                fldDateOfBirthValidator.CssClass = "Error alert alert-danger"
                 fldDateOfBirth.CssClass = "ErrorInput"
             ElseIf Not IsNothing(dateOfBirthDate) And dateOfBirthDate < maxAllowedDOB Then
-                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged over " & MaxAgeAllowed & " (on " & dateToCheckDOB.ToString("dd MMM yyyy") & ")"
+                fldDateOfBirthValidator.ErrorMessage = "You cannot be aged over " & MaxAgeAllowed & " (On " & ReferenceDate.ToString("dd MMM yyyy") & ")"
                 fldDateOfBirthValidator.IsValid = False
-                fldDateOfBirthValidator.CssClass = "error alert alert-danger"
+                fldDateOfBirthValidator.CssClass = "Error alert alert-danger"
                 fldDateOfBirth.CssClass = "ErrorInput"
             End If
         End If
 
         'Gender
         If Not IsNothing(fldGender.Value) Then
-            If String.IsNullOrEmpty(fldGender.Value) Then
-                fldGenderValidator.ErrorMessage = "Legal Gender must not be blank"
+            If String.IsNullOrEmpty(Convert.ToString(fldGender.Value)) Then
+                fldGenderValidator.ErrorMessage = "Legal Gender must Not be blank"
                 fldGenderValidator.IsValid = False
-                fldGenderValidator.CssClass = "error alert alert-danger"
+                fldGenderValidator.CssClass = "Error alert alert-danger"
                 fldGender.CssClass = "ErrorInput"
             End If
         End If
 
         'National Insurance Number
-        'Dim regexNI As New Regex("^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$")
-        'If Not IsNothing(fldNI.Value) Then
-        '    Dim match As Match = regexNI.Match(fldNI.Value)
-        '    If String.IsNullOrEmpty(fldNI.Value) And IsUnder19 = False Then
-        '        fldNIValidator.ErrorMessage = "National Insurance Number must not be blank for anyone 19+"
-        '        fldNIValidator.IsValid = False
-        '        fldNIValidator.CssClass = "error alert alert-danger"
-        '        fldNI.CssClass = "ErrorInput"
-        '    ElseIf Not match.Success And CStr(fldNI.Value).Length > 0 Then
-        '        fldNIValidator.ErrorMessage = "Please enter a valid National Insurance Number"
-        '        fldNIValidator.IsValid = False
-        '        fldNIValidator.CssClass = "error alert alert-danger"
-        '        fldNI.CssClass = "ErrorInput"
-        '    End If
-        'End If
+        Dim regexNI As New Regex("^(?!BG)(?!GB)(?!NK)(?!KN)(?!TN)(?!NT)(?!ZZ)(?:[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z])(?:\s*\d\s*){6}([A-D]|\s)$")
+        If Not IsNothing(fldNI.Value) Then
+            Dim match As Match = regexNI.Match(Convert.ToString(fldNI.Value))
+            If String.IsNullOrEmpty(Convert.ToString(fldNI.Value)) And IsUnder19 = False Then
+                fldNIValidator.ErrorMessage = "National Insurance Number must not be blank for anyone 19+"
+                fldNIValidator.IsValid = False
+                fldNIValidator.CssClass = "error alert alert-danger"
+                fldNI.CssClass = "ErrorInput"
+            ElseIf Not match.Success And CStr(fldNI.Value).Length > 0 Then
+                fldNIValidator.ErrorMessage = "Please enter a valid National Insurance Number"
+                fldNIValidator.IsValid = False
+                fldNIValidator.CssClass = "error alert alert-danger"
+                fldNI.CssClass = "ErrorInput"
+            End If
+        End If
 
         'Criminal Convictions
         If Not IsNothing(fldCriminalConvictionID.Value) Then
-            If String.IsNullOrEmpty(fldCriminalConvictionID.Value) Then
+            If String.IsNullOrEmpty(Convert.ToString(fldCriminalConvictionID.Value)) Then
                 fldCriminalConvictionIDValidator.ErrorMessage = "Criminal Convictions must not be blank"
                 fldCriminalConvictionIDValidator.IsValid = False
                 fldCriminalConvictionIDValidator.CssClass = "error alert alert-danger"
@@ -512,7 +527,7 @@ Partial Class personal_details
     End Sub
 
     Private Sub RadioButtonListAlt_Change(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButtonListAlt.SelectedIndexChanged
-        If RadioButtonListAlt.SelectedValue = 2 Then
+        If RadioButtonListAlt.SelectedValue = "2" Then
             WorkingData.EnrolmentRequest(0).AltPostcodeOut = ""
             WorkingData.EnrolmentRequest(0).AltPostcodeIn = ""
         End If
@@ -575,10 +590,10 @@ Partial Class personal_details
                 WorkingData.EnrolmentRequestRow.AccommodationTypeID = "11"
             End If
 
-            WorkingData.EnrolmentRequest(0).Address1 = fldAddress1.Value
-            WorkingData.EnrolmentRequest(0).Address2 = fldAddress2.Value
-            WorkingData.EnrolmentRequest(0).Address3 = fldAddress3.Value
-            WorkingData.EnrolmentRequest(0).Address4 = fldAddress4.Value
+            WorkingData.EnrolmentRequest(0).Address1 = Convert.ToString(fldAddress1.Value)
+            WorkingData.EnrolmentRequest(0).Address2 = Convert.ToString(fldAddress2.Value)
+            WorkingData.EnrolmentRequest(0).Address3 = Convert.ToString(fldAddress3.Value)
+            WorkingData.EnrolmentRequest(0).Address4 = Convert.ToString(fldAddress4.Value)
 
             'postcode stuff            
             ''CCCPS-77326: Setting flag to false so Main Address screen opens when coming from this page.
